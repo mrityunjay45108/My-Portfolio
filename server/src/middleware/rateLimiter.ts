@@ -5,6 +5,7 @@ export const generalLimiter = rateLimit({
   max: 300, // Limit each IP to 300 requests per `window`
   standardHeaders: true,
   legacyHeaders: false,
+  validate: { xForwardedForHeader: false },
   message: {
     success: false,
     message: 'Too many requests from this IP, please try again after 15 minutes.',
@@ -16,6 +17,7 @@ export const authLimiter = rateLimit({
   max: 15, // Limit each IP to 15 login attempts per window
   standardHeaders: true,
   legacyHeaders: false,
+  validate: { xForwardedForHeader: false },
   message: {
     success: false,
     message: 'Too many login attempts from this IP, please try again after 15 minutes.',
@@ -27,6 +29,7 @@ export const contactLimiter = rateLimit({
   max: 10, // Limit each IP to 10 contact messages per window
   standardHeaders: true,
   legacyHeaders: false,
+  validate: { xForwardedForHeader: false },
   message: {
     success: false,
     message: 'Too many contact messages sent. Please wait a few minutes before trying again.',

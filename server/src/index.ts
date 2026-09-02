@@ -12,6 +12,9 @@ import prisma from './database/prisma.js';
 
 const app = express();
 
+// Trust proxy for Render / Cloud deployment
+app.set('trust proxy', 1);
+
 // Ensure upload directory exists
 const uploadsPath = path.resolve(process.cwd(), config.storage.localDir);
 if (!fs.existsSync(uploadsPath)) {
