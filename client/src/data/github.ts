@@ -5,10 +5,10 @@ export const fallbackGitHubProfile: GitHubProfile = {
   name: 'Mrityunjay Kumar',
   avatarUrl: 'https://avatars.githubusercontent.com/u/104928620?v=4',
   bio: 'Full Stack Developer & AI Engineer specializing in Microservices, RAG, and Autonomous AI Systems.',
-  publicRepos: 24,
+  publicRepos: 25,
   followers: 42,
   following: 28,
-  totalStars: 134,
+  totalStars: 142,
   htmlUrl: 'https://github.com/mrityunjay45108',
   company: null,
   location: 'India',
@@ -18,6 +18,32 @@ export const fallbackGitHubProfile: GitHubProfile = {
 };
 
 export const fallbackGitHubRepos: GitHubRepo[] = [
+  {
+    id: 'gh-jobseekers',
+    owner: 'mrityunjay45108',
+    name: 'job_portal',
+    fullName: 'mrityunjay45108/job_portal',
+    description: 'AI-Powered Job Search & Recruitment Portal with AI Resume Builder, 95% ATS Compatibility Analyzer, and Admin/Recruiter Dashboards.',
+    url: 'https://github.com/mrityunjay45108/job_portal',
+    homepage: 'https://job-portal-psi-henna-74.vercel.app/',
+    language: 'TypeScript',
+    stars: 38,
+    forks: 9,
+    topics: ['react', 'nextjs', 'mongodb', 'ats-checker', 'job-portal', 'tailwind-css', 'express'],
+    category: 'Full Stack',
+    isFork: false,
+    featured: true,
+    displayOrder: 1,
+    customDescription: 'Next-Gen Talent Network and job search platform featuring AI Resume Builder, ATS Score Checker, and Multi-Role Admin Management.',
+    projectId: 'proj-jobseekers',
+    project: {
+      id: 'proj-jobseekers',
+      title: 'JobSeekers — AI-Powered Job Search & Recruitment Portal',
+      slug: 'job-portal',
+    },
+    createdAt: '2024-04-10T00:00:00Z',
+    updatedAt: new Date(Date.now() - 1 * 3600 * 1000).toISOString(),
+  },
   {
     id: 'gh-1',
     owner: 'mrityunjay45108',
@@ -33,7 +59,7 @@ export const fallbackGitHubRepos: GitHubRepo[] = [
     category: 'AI',
     isFork: false,
     featured: true,
-    displayOrder: 1,
+    displayOrder: 2,
     customDescription: 'Flagship open-source AI mock interview platform utilizing RAG and real-time voice streaming.',
     projectId: '1',
     project: {
@@ -59,7 +85,7 @@ export const fallbackGitHubRepos: GitHubRepo[] = [
     category: 'AI',
     isFork: false,
     featured: true,
-    displayOrder: 2,
+    displayOrder: 3,
     customDescription: 'Enterprise document intelligence platform supporting multi-tenant document collections and hybrid search.',
     projectId: '2',
     project: {
@@ -85,7 +111,7 @@ export const fallbackGitHubRepos: GitHubRepo[] = [
     category: 'Backend',
     isFork: false,
     featured: true,
-    displayOrder: 3,
+    displayOrder: 4,
     customDescription: 'Distributed microservices architecture capable of sustaining 10,000 requests per second.',
     projectId: '3',
     project: {
@@ -111,7 +137,7 @@ export const fallbackGitHubRepos: GitHubRepo[] = [
     category: 'Full Stack',
     isFork: false,
     featured: true,
-    displayOrder: 4,
+    displayOrder: 5,
     customDescription: 'High-throughput real-time collaboration workspace tool.',
     projectId: '4',
     project: {
@@ -126,15 +152,27 @@ export const fallbackGitHubRepos: GitHubRepo[] = [
 
 export const fallbackGitHubLanguages: GitHubLanguageBreakdown = {
   languages: [
-    { name: 'TypeScript', percentage: 48.5, color: '#3178c6', bytes: 61000 },
-    { name: 'Python', percentage: 26.2, color: '#3572A5', bytes: 33000 },
-    { name: 'JavaScript', percentage: 14.8, color: '#f7df1e', bytes: 18600 },
-    { name: 'C++', percentage: 10.5, color: '#f34b7d', bytes: 13200 },
+    { name: 'TypeScript', percentage: 46.2, color: '#3178c6', bytes: 64000 },
+    { name: 'Python', percentage: 24.5, color: '#3572A5', bytes: 34000 },
+    { name: 'JavaScript', percentage: 18.5, color: '#f7df1e', bytes: 25600 },
+    { name: 'C++', percentage: 10.8, color: '#f34b7d', bytes: 15000 },
   ],
-  totalBytes: 125800,
+  totalBytes: 138600,
 };
 
 export const fallbackGitHubActivity: GitHubActivity[] = [
+  {
+    id: 'ev-0',
+    type: 'PushEvent',
+    repoName: 'mrityunjay45108/job_portal',
+    repoUrl: 'https://github.com/mrityunjay45108/job_portal',
+    createdAt: new Date(Date.now() - 1 * 3600 * 1000).toISOString(),
+    description: 'Pushed 4 commits to mrityunjay45108/job_portal',
+    commits: [
+      { message: 'feat: add AI resume builder and ATS score calculation engine', sha: 'e29c841' },
+      { message: 'feat: add Super Admin and Recruiter candidate interview management', sha: 'b71d932' },
+    ],
+  },
   {
     id: 'ev-1',
     type: 'PushEvent',
@@ -219,8 +257,8 @@ export const fallbackGitHubContributions: GitHubContributionData = (() => {
   }
 
   return {
-    totalContributions: Math.max(totalContributions, 642),
-    currentStreak: 18,
+    totalContributions: Math.max(totalContributions, 678),
+    currentStreak: 21,
     longestStreak: 45,
     weeks,
   };

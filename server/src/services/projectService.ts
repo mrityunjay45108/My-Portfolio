@@ -9,6 +9,8 @@ export interface ProjectCreateInput {
   featured?: boolean;
   published?: boolean;
   githubUrl?: string;
+  githubOwner?: string;
+  githubRepository?: string;
   liveUrl?: string;
   architectureImage?: string;
   architectureDescription?: string;
@@ -16,6 +18,7 @@ export interface ProjectCreateInput {
   order?: number;
   technologies?: string[]; // Array of tech names or IDs
   features?: { title: string; description: string }[];
+  images?: { id?: string; url: string; altText?: string; order?: number }[];
 }
 
 export class ProjectService {
@@ -104,7 +107,7 @@ export class ProjectService {
   }
 
   static async createProject(data: ProjectCreateInput) {
-    const { technologies = [], features = [], ...projectData } = data;
+    const { technologies = [], features = [], images = [], ...projectData } = data;
 
     // Create the project
     const project = await prisma.project.create({
@@ -117,13 +120,19 @@ export class ProjectService {
             order: idx,
           })),
         },
+        images: {
+          create: images.map((img, idx) => ({
+            url: img.url,
+            altText: img.altText || null,
+            order: img.order !== undefined ? img.order : idx,
+          })),
+        },
       },
     });
 
     // Attach technologies
     if (technologies.length > 0) {
       for (const techInput of technologies) {
-        // Find existing technology by ID or Name
         let tech = await prisma.technology.findFirst({
           where: {
             OR: [{ id: techInput }, { name: { equals: techInput, mode: 'insensitive' } }],
@@ -131,7 +140,6 @@ export class ProjectService {
         });
 
         if (!tech) {
-          // Auto-create tech if it doesn't exist
           tech = await prisma.technology.create({
             data: {
               name: techInput,
@@ -153,7 +161,7 @@ export class ProjectService {
   }
 
   static async updateProject(id: string, data: Partial<ProjectCreateInput>) {
-    const { technologies, features, ...projectData } = data;
+    const { technologies, features, images, ...projectData } = data;
 
     // Update basic fields
     await prisma.project.update({
@@ -171,6 +179,21 @@ export class ProjectService {
             title: f.title,
             description: f.description,
             order: idx,
+          })),
+        });
+      }
+    }
+
+    // Update images if provided
+    if (images !== undefined) {
+      await prisma.projectImage.deleteMany({ where: { projectId: id } });
+      if (images.length > 0) {
+        await prisma.projectImage.createMany({
+          data: images.map((img, idx) => ({
+            projectId: id,
+            url: img.url,
+            altText: img.altText || null,
+            order: img.order !== undefined ? img.order : idx,
           })),
         });
       }

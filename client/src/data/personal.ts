@@ -7,7 +7,7 @@ export const personalInfo: PersonalInfo = {
   bio: 'I am a passionate Full Stack Developer and AI Engineer with expertise in architecting high-throughput backend APIs, microservices, and intelligent LLM/RAG systems. I specialize in building end-to-end applications with React, TypeScript, Node.js, PostgreSQL, Docker, and cutting-edge Generative AI workflows.',
   email: 'mrityunjay45108@gmail.com',
   github: 'https://github.com/mrityunjay45108',
-  linkedin: 'https://linkedin.com/in/mrityunjay45108',
+  linkedin: 'https://www.linkedin.com/in/mrityunjay-kumar-8480842a5',
   resumeUrl: '/resume.pdf',
   location: 'India',
   stats: [
