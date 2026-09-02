@@ -8,7 +8,7 @@ export const personalInfo: PersonalInfo = {
   email: 'kumarmrityunjay5210@gmail.com',
   github: 'https://github.com/mrityunjay45108',
   linkedin: 'https://www.linkedin.com/in/mrityunjay-kumar-8480842a5',
-  resumeUrl: '/resume.pdf',
+  resumeUrl: 'https://res.cloudinary.com/dpd6q8ex4/image/upload/v1788340801/Mrityunjay_kumar_resume0._ydptl9.pdf',
   location: 'India',
   stats: [
     {

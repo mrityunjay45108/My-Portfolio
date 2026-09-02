@@ -99,10 +99,10 @@ export const fallbackGitHubRepos: GitHubRepo[] = [
   {
     id: 'gh-3',
     owner: 'mrityunjay45108',
-    name: 'microservices-ecommerce',
-    fullName: 'mrityunjay45108/microservices-ecommerce',
+    name: 'scalable-ecommerce-platform',
+    fullName: 'mrityunjay45108/scalable-ecommerce-platform',
     description: 'Event-driven e-commerce backend with distributed Saga orchestration, Docker, and Redis caching.',
-    url: 'https://github.com/mrityunjay45108/microservices-ecommerce',
+    url: 'https://github.com/mrityunjay45108/scalable-ecommerce-platform',
     homepage: 'https://ecommerce.demo.mrityunjay.dev',
     language: 'TypeScript',
     stars: 29,

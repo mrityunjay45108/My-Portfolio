@@ -156,7 +156,7 @@ export const ContactSection: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Input
                     label="Your Name"
-                    placeholder="John Doe"
+                    placeholder="Enter your name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     error={errors.name}
@@ -165,7 +165,7 @@ export const ContactSection: React.FC = () => {
                   <Input
                     label="Email Address"
                     type="email"
-                    placeholder="john@company.com"
+                    placeholder="Enter your email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     error={errors.email}

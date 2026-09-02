@@ -122,7 +122,7 @@ export const initialProjects: Project[] = [
     featured: true,
     published: true,
     order: 4,
-    githubUrl: 'https://github.com/mrityunjay45108/microservices-ecommerce',
+    githubUrl: 'https://github.com/mrityunjay45108/scalable-ecommerce-platform',
     liveUrl: 'https://ecommerce.demo.mrityunjay.dev',
     architectureImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
     architectureDescription: 'Kubernetes-orchestrated microservices cluster with Kong API Gateway, Dockerized container instances, and PostgreSQL sharded databases.',
