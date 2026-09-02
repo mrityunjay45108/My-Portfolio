@@ -1,0 +1,301 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum ContentStatus {
+  DRAFT
+  PREVIEW
+  PUBLISHED
+  ARCHIVED
+}
+
+model User {
+  id           String     @id @default(uuid())
+  name         String
+  email        String     @unique
+  passwordHash String
+  role         Role       @default(ADMIN)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  posts        BlogPost[]
+
+  @@map("users")
+}
+
+model Project {
+  id                      String              @id @default(uuid())
+  title                   String
+  slug                    String              @unique
+  shortDescription        String
+  description             String
+  category                String              @default("Full Stack")
+  featured                Boolean             @default(false)
+  published               Boolean             @default(true)
+  githubUrl               String?
+  githubOwner             String?
+  githubRepository        String?
+  liveUrl                 String?
+  architectureImage       String?
+  architectureDescription String?
+  videoUrl                String?
+  order                   Int                 @default(0)
+  createdAt               DateTime            @default(now())
+  updatedAt               DateTime            @updatedAt
+  viewCount               Int                 @default(0)
+
+  images                  ProjectImage[]
+  features                ProjectFeature[]
+  technologies            ProjectTechnology[]
+  linkedGitHubRepo        GitHubRepository?
+
+  @@index([slug])
+  @@index([category])
+  @@index([featured])
+  @@index([published])
+  @@map("projects")
+}
+
+model ProjectImage {
+  id        String   @id @default(uuid())
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  url       String
+  altText   String?
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@index([projectId])
+  @@map("project_images")
+}
+
+model ProjectFeature {
+  id          String   @id @default(uuid())
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  title       String
+  description String
+  order       Int      @default(0)
+
+  @@index([projectId])
+  @@map("project_features")
+}
+
+model Technology {
+  id           String                @id @default(uuid())
+  name         String                @unique
+  icon         String?
+  category     String                @default("General") // Languages, Frontend, Backend, Databases, DevOps & Cloud, AI & GenAI
+  createdAt    DateTime              @default(now())
+
+  projects     ProjectTechnology[]
+  caseStudies  CaseStudyTechnology[]
+
+  @@index([category])
+  @@map("technologies")
+}
+
+model ProjectTechnology {
+  projectId    String
+  technologyId String
+  project      Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  technology   Technology @relation(fields: [technologyId], references: [id], onDelete: Cascade)
+
+  @@id([projectId, technologyId])
+  @@map("project_technologies")
+}
+
+model BlogCategory {
+  id          String     @id @default(uuid())
+  name        String     @unique
+  slug        String     @unique
+  description String?
+  createdAt   DateTime   @default(now())
+  posts       BlogPost[]
+
+  @@map("blog_categories")
+}
+
+model Tag {
+  id        String    @id @default(uuid())
+  name      String    @unique
+  slug      String    @unique
+  createdAt DateTime  @default(now())
+  posts     PostTag[]
+
+  @@map("tags")
+}
+
+model BlogPost {
+  id            String        @id @default(uuid())
+  title         String
+  slug          String        @unique
+  excerpt       String
+  content       String
+  featuredImage String?
+  authorId      String
+  author        User          @relation(fields: [authorId], references: [id])
+  status        ContentStatus @default(DRAFT)
+  categoryId    String?
+  category      BlogCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  readingTime   Int           @default(5)
+  viewCount     Int           @default(0)
+  publishedAt   DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  tags          PostTag[]
+
+  @@index([slug])
+  @@index([status])
+  @@index([categoryId])
+  @@map("blog_posts")
+}
+
+model PostTag {
+  postId String
+  tagId  String
+  post   BlogPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag    Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([postId, tagId])
+  @@map("post_tags")
+}
+
+model CaseStudy {
+  id                      String                @id @default(uuid())
+  title                   String
+  slug                    String                @unique
+  summary                 String
+  problem                 String
+  background              String?
+  goals                   String?
+  architecture            String?
+  architectureImage       String?
+  implementation          String?
+  challenges              String?
+  solutions               String?
+  security                String?
+  performance             String?
+  results                 String?
+  lessonsLearned          String?
+  videoUrl                String?
+  githubUrl               String?
+  liveUrl                 String?
+  featured                Boolean               @default(false)
+  status                  ContentStatus         @default(DRAFT)
+  order                   Int                   @default(0)
+  viewCount               Int                   @default(0)
+  publishedAt             DateTime?
+  createdAt               DateTime              @default(now())
+  updatedAt               DateTime              @updatedAt
+
+  images                  CaseStudyImage[]
+  technologies            CaseStudyTechnology[]
+  sections                CaseStudySection[]
+
+  @@index([slug])
+  @@index([status])
+  @@index([featured])
+  @@map("case_studies")
+}
+
+model CaseStudyImage {
+  id          String    @id @default(uuid())
+  caseStudyId String
+  caseStudy   CaseStudy @relation(fields: [caseStudyId], references: [id], onDelete: Cascade)
+  url         String
+  caption     String?
+  order       Int       @default(0)
+  createdAt   DateTime  @default(now())
+
+  @@index([caseStudyId])
+  @@map("case_study_images")
+}
+
+model CaseStudyTechnology {
+  caseStudyId  String
+  technologyId String
+  caseStudy    CaseStudy  @relation(fields: [caseStudyId], references: [id], onDelete: Cascade)
+  technology   Technology @relation(fields: [technologyId], references: [id], onDelete: Cascade)
+
+  @@id([caseStudyId, technologyId])
+  @@map("case_study_technologies")
+}
+
+model CaseStudySection {
+  id          String    @id @default(uuid())
+  caseStudyId String
+  caseStudy   CaseStudy @relation(fields: [caseStudyId], references: [id], onDelete: Cascade)
+  title       String
+  content     String
+  order       Int       @default(0)
+
+  @@index([caseStudyId])
+  @@map("case_study_sections")
+}
+
+model ContactMessage {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([isRead])
+  @@map("contact_messages")
+}
+
+model VisitorAnalytics {
+  id         String   @id @default(uuid())
+  path       String
+  type       String   @default("PAGE_VIEW") // PAGE_VIEW, GITHUB_CLICK, LIVE_DEMO_CLICK, RESUME_DOWNLOAD
+  resourceId String?  // projectId, blogId, or caseStudyId
+  ipHash     String?
+  userAgent  String?
+  referrer   String?
+  createdAt  DateTime @default(now())
+
+  @@index([path])
+  @@index([type])
+  @@index([createdAt])
+  @@map("visitor_analytics")
+}
+
+model GitHubRepository {
+  id                String    @id @default(uuid())
+  owner             String
+  name              String
+  fullName          String    @unique // e.g. "mrityunjay45108/ai-interview-copilot"
+  description       String?
+  url               String
+  language          String?
+  stars             Int       @default(0)
+  forks             Int       @default(0)
+  topics            String[]  @default([])
+  featured          Boolean   @default(false)
+  displayOrder      Int       @default(0)
+  customDescription String?
+  projectId         String?   @unique
+  project           Project?  @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  lastSyncedAt      DateTime  @default(now())
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  @@index([owner])
+  @@index([name])
+  @@index([featured])
+  @@index([displayOrder])
+  @@map("github_repositories")
+}

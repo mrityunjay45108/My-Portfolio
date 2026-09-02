@@ -1,0 +1,24 @@
+{
+  "name": "mrityunjay-portfolio-platform",
+  "version": "2.0.0",
+  "description": "Production Developer Portfolio, Engineering Showcase, Blog & Case Study CMS Platform",
+  "scripts": {
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"cyan,magenta\" \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:client": "npm --prefix client run dev",
+    "dev:server": "npm --prefix server run dev",
+    "build": "npm --prefix server run build && npm --prefix client run build",
+    "build:client": "npm --prefix client run build",
+    "build:server": "npm --prefix server run build",
+    "start": "npm --prefix server start",
+    "seed": "npm --prefix server run prisma:seed",
+    "prisma:generate": "npm --prefix server run prisma:generate",
+    "prisma:push": "npm --prefix server run prisma:push",
+    "prisma:migrate": "npm --prefix server run prisma:migrate",
+    "prisma:studio": "npm --prefix server run prisma:studio"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "author": "Mrityunjay Kumar",
+  "license": "MIT"
+}
