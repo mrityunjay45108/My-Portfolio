@@ -299,3 +299,48 @@ model GitHubRepository {
   @@index([displayOrder])
   @@map("github_repositories")
 }
+
+model AiConversation {
+  id          String      @id @default(uuid())
+  sessionId   String?     // Anonymous session identifier
+  title       String?     // First question summary
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  messages    AiMessage[]
+
+  @@index([sessionId])
+  @@index([createdAt])
+  @@map("ai_conversations")
+}
+
+model AiMessage {
+  id             String         @id @default(uuid())
+  conversationId String
+  conversation   AiConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  role           String         // "user" | "assistant" | "system"
+  content        String
+  sources        Json?          // Array of source objects { title, url, type }
+  responseType   String?        @default("text") // "text" | "project" | "project-list" | "blog" | "case-study" | "github" | "contact"
+  metadata       Json?          // Extra card data e.g. project details, tokens used
+  latencyMs      Int?
+  feedback       String?        // "up" | "down"
+  createdAt      DateTime       @default(now())
+
+  @@index([conversationId])
+  @@index([createdAt])
+  @@map("ai_messages")
+}
+
+model AiSetting {
+  id               String   @id @default("default")
+  enabled          Boolean  @default(true)
+  provider         String   @default("gemini") // "gemini" | "openai" | "anthropic" | "local"
+  model            String   @default("gemini-1.5-flash")
+  systemPrompt     String?
+  rateLimitPerMin  Int      @default(15)
+  maxTokens        Int      @default(800)
+  temperature      Float    @default(0.4)
+  updatedAt        DateTime @updatedAt
+
+  @@map("ai_settings")
+}

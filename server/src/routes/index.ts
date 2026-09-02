@@ -9,6 +9,7 @@ import analyticsRoutes from './analyticsRoutes.js';
 import mediaRoutes from './mediaRoutes.js';
 import githubRoutes from './githubRoutes.js';
 import adminGithubRoutes from './adminGithubRoutes.js';
+import aiRoutes from './aiRoutes.js';
 
 const apiRouter = Router();
 
@@ -22,6 +23,7 @@ apiRouter.use('/analytics', analyticsRoutes);
 apiRouter.use('/media', mediaRoutes);
 apiRouter.use('/github', githubRoutes);
 apiRouter.use('/admin/github', adminGithubRoutes);
+apiRouter.use('/ai', aiRoutes);
 
 // Health check endpoint
 apiRouter.get('/health', (_req, res) => {

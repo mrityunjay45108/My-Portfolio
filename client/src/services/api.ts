@@ -501,6 +501,68 @@ class ApiClient {
       return data.data;
     },
   };
+
+  // AI PORTFOLIO ASSISTANT
+  ai = {
+    chat: async (message: string, conversationId?: string, sessionId?: string): Promise<{
+      success: boolean;
+      answer: string;
+      conversationId: string;
+      sources: { title: string; url: string; type: string }[];
+      responseType: string;
+      metadata?: any;
+      latencyMs: number;
+    }> => {
+      try {
+        const res = await this.request<any>('/ai/chat', {
+          method: 'POST',
+          body: JSON.stringify({ message, conversationId, sessionId }),
+        });
+        return res;
+      } catch (err: any) {
+        return {
+          success: false,
+          answer: "I'm temporarily experiencing an issue. You can explore Mrityunjay's Projects, Skills, and About sections directly!",
+          conversationId: conversationId || 'error-session',
+          sources: [],
+          responseType: 'text',
+          latencyMs: 0,
+        };
+      }
+    },
+
+    getSuggestedQuestions: async (): Promise<string[]> => {
+      try {
+        const res = await this.request<any>('/ai/suggested-questions');
+        return res.questions || [];
+      } catch {
+        return [
+          "Who is Mrityunjay Kumar?",
+          "Show me his AI projects",
+          "What technologies does he use?",
+          "Tell me about AI Interview Copilot",
+          "How can I contact him?",
+        ];
+      }
+    },
+
+    getAdminStats: async () => {
+      return this.request<any>('/ai/admin/stats');
+    },
+
+    updateSettings: async (settings: any) => {
+      return this.request<any>('/ai/admin/settings', {
+        method: 'PUT',
+        body: JSON.stringify(settings),
+      });
+    },
+
+    clearConversations: async () => {
+      return this.request<any>('/ai/admin/conversations', {
+        method: 'DELETE',
+      });
+    },
+  };
 }
 
 export const api = new ApiClient();

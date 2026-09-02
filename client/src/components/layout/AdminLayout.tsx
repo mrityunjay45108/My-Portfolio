@@ -14,6 +14,7 @@ import {
   X,
   GitBranch,
   GraduationCap,
+  Bot,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -36,6 +37,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, actio
 
   const navItems = [
     { label: 'Dashboard', path: '/admin', icon: LayoutDashboard },
+    { label: 'AI Assistant', path: '/admin/ai', icon: Bot },
     { label: 'Projects', path: '/admin/projects', icon: FolderGit2 },
     { label: 'Education', path: '/admin/education', icon: GraduationCap },
     { label: 'GitHub Activity', path: '/admin/github', icon: GitBranch },

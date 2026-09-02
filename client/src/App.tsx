@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-route
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ToastProvider } from './context/ToastContext';
 import { EducationProvider } from './context/EducationContext';
+import { AiChatWidget } from './components/ai/AiChatWidget';
 
 // Public Pages
 import { HomePage } from './pages/HomePage';
@@ -17,6 +18,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 // Admin Pages
 import { AdminLoginPage } from './pages/admin/AdminLoginPage';
 import { AdminDashboardPage } from './pages/admin/AdminDashboardPage';
+import { AdminAiPage } from './pages/admin/AdminAiPage';
 import { AdminProjectsPage } from './pages/admin/AdminProjectsPage';
 import { AdminProjectFormPage } from './pages/admin/AdminProjectFormPage';
 import { AdminEducationPage } from './pages/admin/AdminEducationPage';
@@ -93,6 +95,14 @@ export const App: React.FC = () => {
                 element={
                   <ProtectedRoute>
                     <AdminDashboardPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/ai"
+                element={
+                  <ProtectedRoute>
+                    <AdminAiPage />
                   </ProtectedRoute>
                 }
               />
@@ -212,6 +222,9 @@ export const App: React.FC = () => {
               {/* 404 Fallback */}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
+
+            {/* Global AI Portfolio Assistant Chat Widget */}
+            <AiChatWidget />
           </EducationProvider>
         </ToastProvider>
       </AuthProvider>
