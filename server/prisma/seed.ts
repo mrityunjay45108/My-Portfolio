@@ -192,7 +192,7 @@ async function main() {
       githubOwner: 'mrityunjay45108',
       githubRepository: 'enterprise-rag-platform',
       liveUrl: 'https://rag-platform.demo.mrityunjay.dev',
-      architectureImage: '/projects/rag-platform/architecture.webp',
+      architectureImage: '/images/projects/rag-platform/enterprise-rag-dashboard.svg',
       architectureDescription: 'Modular ingestion pipeline using LangChain, FastEmbed, PostgreSQL with pgvector, and Redis caching for recurrent query embedding lookups.',
       videoUrl: '',
       technologies: ['Python', 'Node.js', 'PostgreSQL', 'Redis', 'RAG', 'AI Agents', 'Docker', 'React'],
@@ -203,7 +203,7 @@ async function main() {
         { title: 'Asynchronous Document Ingestion', description: 'Background worker queues processing 100+ page documents with progress tracking.' }
       ],
       images: [
-        { url: '/projects/rag-platform/screenshot-1.webp', altText: 'Interactive chat interface with cited document drawer', order: 1 },
+        { url: '/images/projects/rag-platform/enterprise-rag-dashboard.svg', altText: 'Enterprise RAG Studio Semantic Q&A Cockpit and Citation Inspector', order: 1 },
         { url: '/projects/rag-platform/screenshot-2.webp', altText: 'Workspace document manager and ingestion queue', order: 2 }
       ]
     },

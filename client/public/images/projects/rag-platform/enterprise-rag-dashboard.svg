@@ -1,0 +1,281 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="ragBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050811"/>
+      <stop offset="50%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#04060d"/>
+    </linearGradient>
+
+    <!-- App Window Glass Gradient -->
+    <linearGradient id="windowGlass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#151d30" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0b1120" stop-opacity="0.98"/>
+    </linearGradient>
+
+    <!-- Gradients for Accents -->
+    <linearGradient id="aiGlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="emeraldPill" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="cyanPill" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+
+    <!-- Shadow & Glow Filters -->
+    <filter id="winShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="25" stdDeviation="35" flood-color="#000000" flood-opacity="0.85"/>
+    </filter>
+    <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="675" fill="url(#ragBg)"/>
+
+  <!-- Tech Grid Overlay -->
+  <g opacity="0.12">
+    <pattern id="ragGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#6366f1" stroke-width="0.8"/>
+    </pattern>
+    <rect width="1200" height="675" fill="url(#ragGrid)"/>
+  </g>
+
+  <!-- Ambient Light Orbs -->
+  <circle cx="280" cy="200" r="220" fill="#4f46e5" opacity="0.15" filter="url(#neonGlow)"/>
+  <circle cx="950" cy="450" r="260" fill="#06b6d4" opacity="0.12" filter="url(#neonGlow)"/>
+  <circle cx="650" cy="100" r="180" fill="#8b5cf6" opacity="0.1" filter="url(#neonGlow)"/>
+
+  <!-- Main SaaS Application Window -->
+  <g transform="translate(50, 40)" filter="url(#winShadow)">
+    <!-- Window Outer Shell -->
+    <rect width="1100" height="595" rx="20" fill="url(#windowGlass)" stroke="#334155" stroke-width="1.5"/>
+
+    <!-- Window Top Header Bar -->
+    <rect width="1100" height="52" rx="20" fill="#0e1526" stroke="#1e293b" stroke-width="1"/>
+    <!-- Window Controls (Red, Yellow, Green) -->
+    <circle cx="28" cy="26" r="6" fill="#ef4444" opacity="0.9"/>
+    <circle cx="48" cy="26" r="6" fill="#f59e0b" opacity="0.9"/>
+    <circle cx="68" cy="26" r="6" fill="#10b981" opacity="0.9"/>
+
+    <!-- App Title & Breadcrumbs -->
+    <g transform="translate(110, 16)">
+      <rect width="22" height="20" rx="6" fill="#6366f1"/>
+      <path d="M 6 5 L 16 5 L 16 15 L 6 15 Z" fill="none" stroke="#ffffff" stroke-width="1.8"/>
+      <text x="32" y="15" fill="#f8fafc" font-family="system-ui, sans-serif" font-weight="700" font-size="13">Enterprise RAG Studio</text>
+      <text x="180" y="15" fill="#64748b" font-family="system-ui, sans-serif" font-size="12">/ Knowledge Collections / Financial &amp; Tech Specs</text>
+    </g>
+
+    <!-- Top Right Stats -->
+    <g transform="translate(740, 14)">
+      <!-- Hybrid Search Badge -->
+      <rect x="0" y="0" width="150" height="26" rx="8" fill="#1e1b4b" stroke="#4f46e5" stroke-width="1"/>
+      <circle cx="14" cy="13" r="3.5" fill="#38bdf8"/>
+      <text x="24" y="17" fill="#c7d2fe" font-family="system-ui, sans-serif" font-weight="600" font-size="11">Dense + BM25 Hybrid</text>
+
+      <!-- Precision Score -->
+      <rect x="160" y="0" width="180" height="26" rx="8" fill="#064e3b" stroke="#059669" stroke-width="1"/>
+      <circle cx="174" cy="13" r="3.5" fill="#34d399"/>
+      <text x="184" y="17" fill="#a7f3d0" font-family="system-ui, sans-serif" font-weight="600" font-size="11">99.4% Factual Precision</text>
+    </g>
+
+    <!-- ================= INNER APP LAYOUT ================= -->
+
+    <!-- LEFT SIDEBAR: Document Knowledge Base (280px) -->
+    <g transform="translate(20, 68)">
+      <rect width="270" height="505" rx="14" fill="#080c16" stroke="#1e293b" stroke-width="1"/>
+      
+      <!-- Sidebar Header -->
+      <text x="18" y="28" fill="#94a3b8" font-family="system-ui, sans-serif" font-weight="700" font-size="11" letter-spacing="1">INDEXED CORPUS (48 DOCS)</text>
+      <rect x="185" y="14" width="68" height="20" rx="6" fill="#1e293b"/>
+      <text x="219" y="28" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="600" text-anchor="middle">+ Ingest</text>
+
+      <!-- Document Item 1 (Active / Selected) -->
+      <g transform="translate(12, 45)">
+        <rect width="246" height="68" rx="10" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.2"/>
+        <rect x="12" y="14" width="28" height="38" rx="4" fill="#dc2626" opacity="0.8"/>
+        <text x="26" y="38" fill="#ffffff" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">PDF</text>
+        <text x="50" y="28" fill="#f8fafc" font-family="system-ui, sans-serif" font-weight="600" font-size="12">Q3_2026_Tech_Audit.pdf</text>
+        <text x="50" y="46" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">142 pages • 840 chunks</text>
+        <circle cx="230" cy="34" r="4" fill="#10b981"/>
+      </g>
+
+      <!-- Document Item 2 -->
+      <g transform="translate(12, 122)">
+        <rect width="246" height="64" rx="10" fill="#0c1322" stroke="#1e293b" stroke-width="1"/>
+        <rect x="12" y="14" width="28" height="36" rx="4" fill="#2563eb" opacity="0.8"/>
+        <text x="26" y="36" fill="#ffffff" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">MD</text>
+        <text x="50" y="28" fill="#cbd5e1" font-family="system-ui, sans-serif" font-weight="600" font-size="12">K8s_Microservices_Spec.md</text>
+        <text x="50" y="45" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">48 pages • 312 chunks</text>
+      </g>
+
+      <!-- Document Item 3 -->
+      <g transform="translate(12, 194)">
+        <rect width="246" height="64" rx="10" fill="#0c1322" stroke="#1e293b" stroke-width="1"/>
+        <rect x="12" y="14" width="28" height="36" rx="4" fill="#059669" opacity="0.8"/>
+        <text x="26" y="36" fill="#ffffff" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">DOC</text>
+        <text x="50" y="28" fill="#cbd5e1" font-family="system-ui, sans-serif" font-weight="600" font-size="12">SecOps_Compliance_v4.docx</text>
+        <text x="50" y="45" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">86 pages • 520 chunks</text>
+      </g>
+
+      <!-- Sidebar Bottom Vector Stats -->
+      <g transform="translate(12, 275)">
+        <rect width="246" height="215" rx="12" fill="#0c1322" stroke="#1e293b" stroke-width="1"/>
+        <text x="15" y="25" fill="#94a3b8" font-family="system-ui, sans-serif" font-weight="700" font-size="11">VECTOR INDEX HEALTH</text>
+        
+        <!-- Stat row 1 -->
+        <text x="15" y="55" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="11">Embedding Model</text>
+        <text x="230" y="55" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="600" text-anchor="end">text-embed-3 (1536d)</text>
+
+        <!-- Stat row 2 -->
+        <text x="15" y="85" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="11">Total Token Chunks</text>
+        <text x="230" y="85" fill="#a78bfa" font-family="monospace" font-size="11" font-weight="600" text-anchor="end">1,420,800</text>
+
+        <!-- Stat row 3 -->
+        <text x="15" y="115" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="11">Vector Search Index</text>
+        <text x="230" y="115" fill="#34d399" font-family="monospace" font-size="11" font-weight="600" text-anchor="end">Postgres HNSW</text>
+
+        <!-- Stat row 4 -->
+        <text x="15" y="145" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="11">Lookup Latency</text>
+        <text x="230" y="145" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="600" text-anchor="end">12.4 ms</text>
+
+        <!-- Stat row 5 -->
+        <rect x="15" y="165" width="216" height="34" rx="8" fill="#1e1b4b" stroke="#4f46e5" stroke-width="1"/>
+        <text x="123" y="186" fill="#e0e7ff" font-family="system-ui, sans-serif" font-weight="600" font-size="11" text-anchor="middle">⚡ RRF Fusion Alpha: 0.75</text>
+      </g>
+    </g>
+
+    <!-- RIGHT MAIN PANEL: Semantic Q&A Cockpit & Citation Split (780px) -->
+    <g transform="translate(305, 68)">
+      <!-- Main Content Card -->
+      <rect width="775" height="505" rx="14" fill="#080c16" stroke="#1e293b" stroke-width="1"/>
+
+      <!-- Search / Natural Query Box -->
+      <g transform="translate(18, 16)">
+        <rect width="739" height="48" rx="12" fill="#0f172a" stroke="#6366f1" stroke-width="1.5"/>
+        <circle cx="24" cy="24" r="8" fill="none" stroke="#818cf8" stroke-width="2"/>
+        <line x1="30" y1="30" x2="36" y2="36" stroke="#818cf8" stroke-width="2" stroke-linecap="round"/>
+        <text x="48" y="29" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="13" font-weight="500">
+          "What is our guaranteed SLA for order inventory rollback during flash sales?"
+        </text>
+        <rect x="650" y="10" width="75" height="28" rx="8" fill="url(#aiGlowGrad)"/>
+        <text x="687" y="28" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="700" font-size="11" text-anchor="middle">Query ↵</text>
+      </g>
+
+      <!-- AI Response Container with Citations -->
+      <g transform="translate(18, 76)">
+        <!-- Response Card -->
+        <rect width="460" height="412" rx="12" fill="#0d1424" stroke="#1e293b" stroke-width="1"/>
+        
+        <!-- Header -->
+        <g transform="translate(16, 16)">
+          <rect width="24" height="24" rx="6" fill="#6366f1"/>
+          <text x="12" y="17" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">AI</text>
+          <text x="34" y="17" fill="#f8fafc" font-family="system-ui, sans-serif" font-weight="700" font-size="13">Synthesized Grounded Answer</text>
+          <text x="350" y="16" fill="#10b981" font-family="monospace" font-size="11" font-weight="600">Verified Citation</text>
+        </g>
+
+        <!-- Synthesized Text with Interactive Highlights -->
+        <g transform="translate(16, 52)">
+          <text x="0" y="18" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="12.5" line-height="1.5">
+            According to the architectural SLA specifications, the distributed
+          </text>
+          <text x="0" y="38" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="12.5">
+            order saga orchestrator enforces a <tspan fill="#38bdf8" font-weight="bold">sub-45ms maximum latency</tspan>
+          </text>
+          <text x="0" y="58" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="12.5">
+            for automatic inventory rollback on payment failure:
+          </text>
+
+          <!-- Highlighted Blockquote / Key Fact -->
+          <rect x="0" y="75" width="428" height="95" rx="8" fill="#131d36" stroke="#4f46e5" stroke-width="1.2"/>
+          <rect x="0" y="75" width="4" height="95" fill="#6366f1"/>
+          <text x="14" y="96" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="11.5" font-weight="600">
+            • Saga Compensation: Triggered via Redis Lua Scripts
+          </text>
+          <text x="14" y="116" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="11.5">
+            • Target p99 Rollback Window: <tspan fill="#34d399" font-family="monospace">38ms</tspan> (Target SLA: &lt; 50ms)
+          </text>
+          <text x="14" y="136" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="11.5">
+            • Data Consistency: Zero phantom reads across PostgreSQL sharding
+          </text>
+          <text x="14" y="156" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10.5">
+            Source: <tspan fill="#38bdf8" font-weight="600">Q3_2026_Tech_Audit.pdf (Page 42, Paragraph 3)</tspan>
+          </text>
+
+          <!-- Second Section -->
+          <text x="0" y="195" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="12.5">
+            In the event of network partition, compensation events are queued in
+          </text>
+          <text x="0" y="215" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="12.5">
+            <tspan fill="#fbbf24" font-weight="600">Kafka partition topics</tspan> with guaranteed idempotency keys.
+          </text>
+
+          <!-- Interactive Citation Badges -->
+          <g transform="translate(0, 240)">
+            <text x="0" y="15" fill="#94a3b8" font-family="system-ui, sans-serif" font-weight="700" font-size="10" letter-spacing="0.5">RETRIEVED CITATION SOURCES:</text>
+            
+            <rect x="0" y="26" width="205" height="34" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="1"/>
+            <text x="10" y="44" fill="#c7d2fe" font-family="system-ui, sans-serif" font-weight="600" font-size="10.5">📄 Q3_Audit.pdf #p42</text>
+            <text x="165" y="44" fill="#34d399" font-family="monospace" font-size="10" font-weight="700">98.8%</text>
+
+            <rect x="215" y="26" width="213" height="34" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+            <text x="225" y="44" fill="#cbd5e1" font-family="system-ui, sans-serif" font-weight="600" font-size="10.5">📄 K8s_Spec.md #sec4</text>
+            <text x="388" y="44" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="700">94.2%</text>
+          </g>
+        </g>
+      </g>
+
+      <!-- Side-by-Side Source Document Viewer (260px) -->
+      <g transform="translate(490, 76)">
+        <rect width="267" height="412" rx="12" fill="#0b101d" stroke="#334155" stroke-width="1"/>
+        
+        <!-- Header -->
+        <rect width="267" height="36" rx="12" fill="#131b2e"/>
+        <text x="14" y="23" fill="#f8fafc" font-family="system-ui, sans-serif" font-weight="700" font-size="11">ORIGINAL SOURCE VIEWER</text>
+        <text x="250" y="23" fill="#38bdf8" font-family="monospace" font-size="10" text-anchor="end">Page 42</text>
+
+        <!-- Simulated Document Page with Yellow/Cyan Highlighter -->
+        <g transform="translate(14, 50)">
+          <!-- Simulated Text Lines -->
+          <rect x="0" y="0" width="180" height="8" rx="2" fill="#334155"/>
+          <rect x="0" y="14" width="235" height="8" rx="2" fill="#334155"/>
+          <rect x="0" y="28" width="220" height="8" rx="2" fill="#334155"/>
+
+          <!-- Highlighting Area (Ground Truth Match) -->
+          <rect x="0" y="48" width="240" height="95" rx="6" fill="#312e81" stroke="#818cf8" stroke-width="1.2"/>
+          <text x="8" y="66" fill="#a5f3fc" font-family="system-ui, sans-serif" font-weight="700" font-size="10">GROUND TRUTH EXTRACT:</text>
+          <text x="8" y="82" fill="#f8fafc" font-family="monospace" font-size="9">"Saga orchestrator SLA</text>
+          <text x="8" y="96" fill="#f8fafc" font-family="monospace" font-size="9">mandates compensation</text>
+          <text x="8" y="110" fill="#f8fafc" font-family="monospace" font-size="9">rollback within 45ms</text>
+          <text x="8" y="124" fill="#34d399" font-family="monospace" font-weight="bold" font-size="9">using atomic Redis Lua."</text>
+
+          <!-- Further non-highlighted lines -->
+          <rect x="0" y="158" width="230" height="8" rx="2" fill="#334155"/>
+          <rect x="0" y="172" width="195" height="8" rx="2" fill="#334155"/>
+          <rect x="0" y="186" width="235" height="8" rx="2" fill="#334155"/>
+          <rect x="0" y="200" width="140" height="8" rx="2" fill="#334155"/>
+        </g>
+
+        <!-- Similarity Radar Metric -->
+        <g transform="translate(14, 310)">
+          <rect width="240" height="85" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+          <text x="12" y="20" fill="#94a3b8" font-family="system-ui, sans-serif" font-weight="600" font-size="10">HYBRID SIMILARITY SCORE</text>
+          <!-- Score Bar -->
+          <rect x="12" y="32" width="216" height="12" rx="6" fill="#1e293b"/>
+          <rect x="12" y="32" width="212" height="12" rx="6" fill="url(#aiGlowGrad)"/>
+          <text x="12" y="65" fill="#34d399" font-family="monospace" font-weight="bold" font-size="12">0.988 Cosine Sim</text>
+          <text x="228" y="65" fill="#a78bfa" font-family="monospace" font-size="10" text-anchor="end">BM25: 14.8</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

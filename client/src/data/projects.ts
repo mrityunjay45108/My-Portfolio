@@ -88,7 +88,7 @@ export const initialProjects: Project[] = [
     order: 3,
     githubUrl: 'https://github.com/mrityunjay45108/enterprise-rag-platform',
     liveUrl: 'https://rag-platform.demo.mrityunjay.dev',
-    architectureImage: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80',
+    architectureImage: '/images/projects/rag-platform/enterprise-rag-dashboard.svg',
     architectureDescription: 'Modular ingestion pipeline using LangChain, FastEmbed, PostgreSQL with pgvector, and Redis caching for recurrent query embedding lookups.',
     viewCount: 890,
     technologies: [
@@ -108,8 +108,8 @@ export const initialProjects: Project[] = [
       { title: 'Asynchronous Document Ingestion', description: 'Background worker queues processing 100+ page documents with progress tracking.' }
     ],
     images: [
-      { id: 'img-4', url: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80', altText: 'Document ingestion and semantic chat interface', order: 1 },
-      { id: 'img-5', url: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80', altText: 'Citation explorer with side-by-side PDF viewer', order: 2 },
+      { id: 'img-4', url: '/images/projects/rag-platform/enterprise-rag-dashboard.svg', altText: 'Enterprise RAG Studio Semantic Q&A Cockpit and Citation Inspector', order: 1 },
+      { id: 'img-5', url: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80', altText: 'Citation explorer with side-by-side document viewer', order: 2 },
     ]
   },
   {
