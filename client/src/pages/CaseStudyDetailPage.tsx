@@ -155,11 +155,12 @@ export const CaseStudyDetailPage: React.FC = () => {
 
           {/* Architecture Image if available */}
           {caseStudy.architectureImage && (
-            <div className="aspect-video w-full rounded-3xl overflow-hidden border border-slate-800 bg-dark-900 shadow-2xl">
+            <div className="w-full rounded-3xl overflow-hidden border border-slate-800 bg-dark-900/90 shadow-2xl p-2 sm:p-4">
               <img
                 src={caseStudy.architectureImage}
-                alt="Architecture Diagram"
-                className="w-full h-full object-cover"
+                alt="System Architecture Diagram"
+                className="w-full h-auto max-h-[560px] object-contain mx-auto rounded-2xl"
+                loading="eager"
               />
             </div>
           )}
