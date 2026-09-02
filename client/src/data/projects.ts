@@ -13,7 +13,7 @@ export const initialProjects: Project[] = [
     order: 1,
     githubUrl: 'https://github.com/mrityunjay45108/job_portal',
     liveUrl: 'https://job-portal-psi-henna-74.vercel.app/',
-    architectureImage: '/images/projects/jobseekers/admin-dashboard.png',
+    architectureImage: '/images/projects/jobseekers/jobseekers-architecture-diagram.svg',
     architectureDescription: 'Modern decoupled architecture featuring a responsive React/TypeScript frontend deployed on Vercel, Node.js/Express REST APIs, database models with indexing on search parameters, JWT authentication with role authorization (Admin/Recruiter/Candidate), and ATS scoring algorithm.',
     viewCount: 1540,
     technologies: [

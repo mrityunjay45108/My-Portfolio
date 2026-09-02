@@ -133,7 +133,7 @@ async function main() {
       githubOwner: 'mrityunjay45108',
       githubRepository: 'job_portal',
       liveUrl: 'https://job-portal-psi-henna-74.vercel.app/',
-      architectureImage: '/images/projects/jobseekers/admin-dashboard.png',
+      architectureImage: '/images/projects/jobseekers/jobseekers-architecture-diagram.svg',
       architectureDescription: 'Modern decoupled architecture featuring a responsive React/TypeScript frontend deployed on Vercel, Node.js/Express REST APIs, database models with indexing on search parameters, JWT authentication with role authorization (Admin/Recruiter/Candidate), and ATS scoring algorithm.',
       videoUrl: '',
       technologies: ['React', 'TypeScript', 'Node.js', 'Express.js', 'PostgreSQL', 'MongoDB', 'Tailwind CSS'],

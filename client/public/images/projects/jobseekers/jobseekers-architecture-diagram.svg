@@ -1,0 +1,374 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 820" width="100%" height="100%" style="background:#070b13; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGlowJob" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1329" />
+      <stop offset="50%" stop-color="#070b13" />
+      <stop offset="100%" stop-color="#091122" />
+    </linearGradient>
+
+    <!-- Gradients -->
+    <linearGradient id="cyanBlueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+
+    <linearGradient id="brandIndigoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#ef4444" />
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111827" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#0c1220" stop-opacity="0.95" />
+    </linearGradient>
+
+    <!-- Filters for Glow Effects -->
+    <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="glowIndigo" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 L3,4 Z" fill="#06b6d4" />
+    </marker>
+    <marker id="arrowIndigo" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 L3,4 Z" fill="#818cf8" />
+    </marker>
+    <marker id="arrowEmerald" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 L3,4 Z" fill="#10b981" />
+    </marker>
+  </defs>
+
+  <!-- Background Canvas with Subtle Tech Grid -->
+  <rect width="1400" height="820" fill="url(#bgGlowJob)" />
+  <g opacity="0.04" stroke="#ffffff" stroke-width="1">
+    <pattern id="gridJob" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" />
+    </pattern>
+    <rect width="1400" height="820" fill="url(#gridJob)" />
+  </g>
+
+  <!-- Ambient Glow Orbs -->
+  <circle cx="200" cy="160" r="150" fill="#06b6d4" opacity="0.06" filter="url(#glowCyan)" />
+  <circle cx="700" cy="400" r="190" fill="#6366f1" opacity="0.06" filter="url(#glowIndigo)" />
+  <circle cx="1200" cy="550" r="160" fill="#10b981" opacity="0.05" filter="url(#glowCyan)" />
+
+  <!-- HEADER BAR -->
+  <g transform="translate(60, 40)">
+    <rect width="1280" height="70" rx="16" fill="#0e1626" stroke="#1e293b" stroke-width="1.5" />
+    
+    <!-- Badge -->
+    <rect x="24" y="20" width="160" height="30" rx="8" fill="#3b82f6" fill-opacity="0.15" stroke="#3b82f6" stroke-opacity="0.4" />
+    <circle cx="38" cy="35" r="4" fill="#38bdf8" />
+    <text x="50" y="39" fill="#38bdf8" font-size="11" font-weight="700" letter-spacing="1">SYSTEM ARCHITECTURE</text>
+
+    <!-- Title -->
+    <text x="200" y="42" fill="#ffffff" font-size="18" font-weight="800" letter-spacing="0.3">
+      JobSeekers — AI-Powered Job Search, ATS Analyzer &amp; RBAC Recruitment Portal
+    </text>
+
+    <!-- Subtitle Meta Tags -->
+    <text x="960" y="42" fill="#94a3b8" font-size="12" font-family="monospace">
+      Live: <tspan fill="#38bdf8">Vercel</tspan> • Backend: <tspan fill="#10b981">Node/Express</tspan> • DB: <tspan fill="#a855f7">PostgreSQL</tspan>
+    </text>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- COLUMN 1: MULTI-ROLE CLIENT TIER (Left) -->
+  <!-- ========================================== -->
+  <g transform="translate(60, 140)">
+    <!-- Container Box -->
+    <rect width="260" height="620" rx="20" fill="url(#cardGrad)" stroke="#3b82f6" stroke-opacity="0.4" stroke-width="1.5" />
+    
+    <!-- Column Header -->
+    <rect x="16" y="16" width="228" height="42" rx="10" fill="#3b82f6" fill-opacity="0.12" />
+    <text x="28" y="42" fill="#60a5fa" font-size="13" font-weight="800" letter-spacing="0.5">1. MULTI-ROLE FRONTEND</text>
+
+    <!-- Box 1: Candidate Portal -->
+    <g transform="translate(18, 75)">
+      <rect width="224" height="155" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#06b6d4" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#38bdf8" font-size="15">👨‍💻</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Candidate Experience</text>
+      <text x="48" y="40" fill="#64748b" font-size="10" font-family="monospace">React 19 • TypeScript</text>
+      <text x="14" y="66" fill="#94a3b8" font-size="11">• Instant Multi-Filter Job Search</text>
+      <text x="14" y="86" fill="#94a3b8" font-size="11">• AI Resume Builder &amp; Exporter</text>
+      <text x="14" y="106" fill="#38bdf8" font-size="11" font-weight="bold">• 95% ATS Compatibility Match</text>
+      <text x="14" y="126" fill="#94a3b8" font-size="11">• 1-Click Job Application Flow</text>
+      <text x="14" y="144" fill="#94a3b8" font-size="11">• Live Interview Tracker</text>
+    </g>
+
+    <!-- Box 2: Recruiter Portal -->
+    <g transform="translate(18, 245)">
+      <rect width="224" height="155" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#10b981" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#34d399" font-size="15">👔</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Recruiter Management</text>
+      <text x="48" y="40" fill="#64748b" font-size="10" font-family="monospace">Recruiter Portal Dashboard</text>
+      <text x="14" y="66" fill="#94a3b8" font-size="11">• Post &amp; Manage Job Listings</text>
+      <text x="14" y="86" fill="#94a3b8" font-size="11">• Applicant Resume Screening</text>
+      <text x="14" y="106" fill="#94a3b8" font-size="11">• AI Candidate Shortlisting</text>
+      <text x="14" y="126" fill="#94a3b8" font-size="11">• Schedule Interview Calls</text>
+      <text x="14" y="144" fill="#94a3b8" font-size="11">• Application Status Pipeline</text>
+    </g>
+
+    <!-- Box 3: Super Admin Control Panel -->
+    <g transform="translate(18, 415)">
+      <rect width="224" height="180" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#f59e0b" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#fbbf24" font-size="15">⚡</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Super Admin Panel</text>
+      <text x="48" y="40" fill="#64748b" font-size="10" font-family="monospace">Admin Governance Console</text>
+      <text x="14" y="66" fill="#94a3b8" font-size="11">• Total Candidates &amp; Recruiters</text>
+      <text x="14" y="86" fill="#94a3b8" font-size="11">• Global Jobs &amp; App Telemetry</text>
+      <text x="14" y="106" fill="#94a3b8" font-size="11">• Verify &amp; Approve Companies</text>
+      <text x="14" y="126" fill="#94a3b8" font-size="11">• RBAC User Role Management</text>
+      <text x="14" y="146" fill="#94a3b8" font-size="11">• Audit Logs &amp; Platform Health</text>
+      <text x="14" y="166" fill="#10b981" font-size="10" font-family="monospace">✓ Live on Vercel Edge CDN</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- COLUMN 2: API GATEWAY & RBAC SECURITY (Middle-Left) -->
+  <!-- ========================================== -->
+  <g transform="translate(360, 140)">
+    <!-- Container Box -->
+    <rect width="270" height="620" rx="20" fill="url(#cardGrad)" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1.5" />
+    
+    <!-- Column Header -->
+    <rect x="16" y="16" width="238" height="42" rx="10" fill="#6366f1" fill-opacity="0.15" />
+    <text x="32" y="42" fill="#818cf8" font-size="13" font-weight="800" letter-spacing="0.5">2. API GATEWAY &amp; RBAC</text>
+
+    <!-- Box 1: Node.js & Express REST Core -->
+    <g transform="translate(18, 75)">
+      <rect width="234" height="195" rx="12" fill="#131d31" stroke="#4f46e5" stroke-opacity="0.4" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#6366f1" fill-opacity="0.25" />
+      <text x="21" y="31" fill="#a5b4fc" font-size="15">🚀</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Express REST Gateway</text>
+      <text x="48" y="40" fill="#818cf8" font-size="10" font-family="monospace">Node.js Engine</text>
+      
+      <rect x="12" y="55" width="210" height="24" rx="6" fill="#0f172a" />
+      <text x="18" y="71" fill="#38bdf8" font-size="10" font-family="monospace">POST /api/auth/login (JWT)</text>
+
+      <rect x="12" y="85" width="210" height="24" rx="6" fill="#0f172a" />
+      <text x="18" y="101" fill="#38bdf8" font-size="10" font-family="monospace">GET  /api/jobs/search?filter=</text>
+
+      <rect x="12" y="115" width="210" height="24" rx="6" fill="#0f172a" />
+      <text x="18" y="131" fill="#38bdf8" font-size="10" font-family="monospace">POST /api/resume/ats-analyze</text>
+
+      <rect x="12" y="145" width="210" height="24" rx="6" fill="#0f172a" />
+      <text x="18" y="161" fill="#38bdf8" font-size="10" font-family="monospace">PUT  /api/applications/:id</text>
+
+      <text x="14" y="186" fill="#10b981" font-size="10" font-family="monospace">✓ Sub-25ms Response Latency</text>
+    </g>
+
+    <!-- Box 2: JWT RBAC Authorization Middleware -->
+    <g transform="translate(18, 285)">
+      <rect width="234" height="155" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#a855f7" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#c084fc" font-size="15">🔒</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">JWT RBAC Guard</text>
+      <text x="48" y="40" fill="#a855f7" font-size="10" font-family="monospace">Role-Based Access Control</text>
+      
+      <g transform="translate(14, 58)">
+        <rect width="64" height="20" rx="4" fill="#06b6d4" fill-opacity="0.2" stroke="#06b6d4" stroke-width="0.8" />
+        <text x="7" y="14" fill="#38bdf8" font-size="9" font-family="monospace">CANDIDATE</text>
+
+        <rect x="70" width="64" height="20" rx="4" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="0.8" />
+        <text x="77" y="14" fill="#34d399" font-size="9" font-family="monospace">RECRUITER</text>
+
+        <rect x="140" width="64" height="20" rx="4" fill="#f59e0b" fill-opacity="0.2" stroke="#f59e0b" stroke-width="0.8" />
+        <text x="149" y="14" fill="#fbbf24" font-size="9" font-family="monospace">ADMIN</text>
+      </g>
+      
+      <text x="14" y="105" fill="#cbd5e1" font-size="11">• Bearer Token Verification</text>
+      <text x="14" y="125" fill="#cbd5e1" font-size="11">• Route-level Permissions</text>
+      <text x="14" y="145" fill="#cbd5e1" font-size="11">• Strict Password Hashing (bcrypt)</text>
+    </g>
+
+    <!-- Box 3: Rate Limiting & Input Validation -->
+    <g transform="translate(18, 455)">
+      <rect width="234" height="140" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#ef4444" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#f87171" font-size="15">🛡️</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Security &amp; Sanitizer</text>
+      <text x="48" y="40" fill="#64748b" font-size="10" font-family="monospace">Zod / Express Validator</text>
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• Schema Payload Validation</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• CORS Origin Whitelist</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• Rate Limiting (100 req/min/IP)</text>
+      <text x="14" y="128" fill="#cbd5e1" font-size="11">• SQL / NoSQL Injection Defense</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- COLUMN 3: AI ATS PARSER & SEARCH ENGINE (Middle-Right) -->
+  <!-- ========================================== -->
+  <g transform="translate(670, 140)">
+    <!-- Container Box -->
+    <rect width="320" height="620" rx="20" fill="url(#cardGrad)" stroke="#a855f7" stroke-opacity="0.4" stroke-width="1.5" />
+    
+    <!-- Column Header -->
+    <rect x="16" y="16" width="288" height="42" rx="10" fill="#a855f7" fill-opacity="0.15" />
+    <text x="28" y="42" fill="#c084fc" font-size="13" font-weight="800" letter-spacing="0.5">3. AI ATS &amp; SEARCH ENGINE</text>
+
+    <!-- Box 1: 95% ATS Compatibility Engine -->
+    <g transform="translate(18, 75)">
+      <rect width="284" height="195" rx="12" fill="#131d31" stroke="#a855f7" stroke-opacity="0.3" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#a855f7" fill-opacity="0.25" />
+      <text x="21" y="31" fill="#e879f9" font-size="15">🎯</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">95% ATS Scoring Engine</text>
+      <text x="48" y="40" fill="#c084fc" font-size="10" font-family="monospace">AI Resume Compatibility Analysis</text>
+      
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• PDF/DOCX Resume Text Parsing</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• Technical Stack &amp; Skill Extraction</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• Match Resume vs Target Job Spec</text>
+      
+      <!-- ATS Score Bar Mini-Widget -->
+      <g transform="translate(14, 120)">
+        <rect width="256" height="34" rx="8" fill="#0f172a" stroke="#a855f7" stroke-opacity="0.4" stroke-width="1" />
+        <text x="12" y="21" fill="#cbd5e1" font-size="11" font-weight="600">ATS Match Score:</text>
+        <text x="130" y="21" fill="#10b981" font-size="12" font-weight="bold" font-family="monospace">95% Compatible</text>
+        <circle cx="236" cy="17" r="6" fill="#10b981" />
+      </g>
+      
+      <text x="14" y="178" fill="#f59e0b" font-size="10" font-weight="bold">Actionable Missing Keyword Suggestions</text>
+    </g>
+
+    <!-- Box 2: Dynamic Multi-Filter Job Search Engine -->
+    <g transform="translate(18, 285)">
+      <rect width="284" height="155" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#06b6d4" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#38bdf8" font-size="15">🔍</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Multi-Filter Search Core</text>
+      <text x="48" y="40" fill="#38bdf8" font-size="10" font-family="monospace">Dynamic Index Search</text>
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• Multi-Criteria Filter Query Engine</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• Filters: Tech Stack, Mode, Location</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• Experience Level &amp; Salary Range</text>
+      <text x="14" y="128" fill="#cbd5e1" font-size="11">• Fast Indexed Result Pagination</text>
+      <text x="14" y="145" fill="#38bdf8" font-size="10" font-family="monospace">&gt; Search Response: &lt;18ms</text>
+    </g>
+
+    <!-- Box 3: Application Lifecycle Orchestrator -->
+    <g transform="translate(18, 455)">
+      <rect width="284" height="140" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#10b981" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#34d399" font-size="15">📋</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Application Lifecycle</text>
+      <text x="48" y="40" fill="#34d399" font-size="10" font-family="monospace">State Machine Pipeline</text>
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• Status: APPLIED &gt; REVIEWED</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• SHORTLISTED &gt; INTERVIEW &gt; HIRED</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• Real-time Candidate Email Alerts</text>
+      <text x="14" y="128" fill="#10b981" font-size="10" font-family="monospace">✓ Zero-State Lost Transitions</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- COLUMN 4: DATABASE & CLOUD STORAGE (Right) -->
+  <!-- ========================================== -->
+  <g transform="translate(1030, 140)">
+    <!-- Container Box -->
+    <rect width="310" height="620" rx="20" fill="url(#cardGrad)" stroke="#10b981" stroke-opacity="0.4" stroke-width="1.5" />
+    
+    <!-- Column Header -->
+    <rect x="16" y="16" width="278" height="42" rx="10" fill="#10b981" fill-opacity="0.12" />
+    <text x="28" y="42" fill="#34d399" font-size="13" font-weight="800" letter-spacing="0.5">4. DATABASE &amp; STORAGE TIER</text>
+
+    <!-- Box 1: Relational PostgreSQL Schema -->
+    <g transform="translate(18, 75)">
+      <rect width="274" height="210" rx="12" fill="#131d31" stroke="#10b981" stroke-opacity="0.3" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#10b981" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#34d399" font-size="15">🗄️</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">PostgreSQL Relational DB</text>
+      <text x="48" y="40" fill="#34d399" font-size="10" font-family="monospace">Structured Relational Schema</text>
+      
+      <!-- Tables breakdown -->
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• <tspan fill="#38bdf8" font-weight="bold">users</tspan> (Role, Auth, Profile)</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• <tspan fill="#38bdf8" font-weight="bold">jobs</tspan> (Title, Salary, Tags, Specs)</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• <tspan fill="#38bdf8" font-weight="bold">applications</tspan> (Status, ATS Score)</text>
+      <text x="14" y="128" fill="#cbd5e1" font-size="11">• <tspan fill="#38bdf8" font-weight="bold">interviews</tspan> (Date, Recruiter, Link)</text>
+      <text x="14" y="148" fill="#cbd5e1" font-size="11">• <tspan fill="#38bdf8" font-weight="bold">companies</tspan> (Verification, Roster)</text>
+      <text x="14" y="170" fill="#94a3b8" font-size="11">• Foreign Keys &amp; Index on Search Cols</text>
+      <text x="14" y="190" fill="#10b981" font-size="10" font-family="monospace">✓ ACID Transactions &amp; Pooling</text>
+    </g>
+
+    <!-- Box 2: Cloud Storage & Resume CDN -->
+    <g transform="translate(18, 300)">
+      <rect width="274" height="145" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#3b82f6" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#60a5fa" font-size="15">☁️</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Cloud Document Storage</text>
+      <text x="48" y="40" fill="#60a5fa" font-size="10" font-family="monospace">Secure S3 / Cloudinary Bucket</text>
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• Candidate Resume PDFs Storage</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• Company Logos &amp; Avatars</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• Signed Secure Download Links</text>
+      <text x="14" y="128" fill="#38bdf8" font-size="10" font-family="monospace">&gt; Fast Content Delivery</text>
+    </g>
+
+    <!-- Box 3: Real-Time Cache Tier -->
+    <g transform="translate(18, 460)">
+      <rect width="274" height="135" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#ef4444" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#f87171" font-size="15">⚡</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Redis In-Memory Cache</text>
+      <text x="48" y="40" fill="#f87171" font-size="10" font-family="monospace">High-Speed Job Query Cache</text>
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• Active User Session Tokens</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• Recurrent Job Search Queries Cache</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• Sliding Window Rate Limit Store</text>
+      <text x="14" y="124" fill="#10b981" font-size="10" font-family="monospace">✓ Cache Hit: &lt;2ms</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- CONNECTION ARROWS & DATA FLOW LINES -->
+  <!-- ========================================== -->
+  <!-- 1. Frontend -> Gateway -->
+  <path d="M320, 200 L360, 200" fill="none" stroke="#06b6d4" stroke-width="2.5" marker-end="url(#arrowCyan)" />
+  <rect x="305" y="180" width="70" height="20" rx="6" fill="#0f172a" stroke="#06b6d4" stroke-width="0.8" />
+  <text x="312" y="194" fill="#38bdf8" font-size="9" font-family="monospace">1. REST / Auth</text>
+
+  <!-- 2. Gateway -> ATS Engine -->
+  <path d="M630, 200 L670, 200" fill="none" stroke="#818cf8" stroke-width="2.5" marker-end="url(#arrowIndigo)" />
+  <rect x="615" y="180" width="70" height="20" rx="6" fill="#0f172a" stroke="#818cf8" stroke-width="0.8" />
+  <text x="620" y="194" fill="#a5b4fc" font-size="9" font-family="monospace">2. Resume Data</text>
+
+  <!-- 3. ATS Engine <-> Database -->
+  <path d="M990, 200 L1030, 200" fill="none" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrowEmerald)" />
+  <rect x="975" y="180" width="70" height="20" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="0.8" />
+  <text x="980" y="194" fill="#34d399" font-size="9" font-family="monospace">3. Job Match</text>
+
+  <!-- 4. Recruiter Action -> Application Lifecycle -->
+  <path d="M320, 340 L670, 520" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowEmerald)" />
+  <rect x="470" y="420" width="90" height="20" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="0.8" />
+  <text x="476" y="434" fill="#34d399" font-size="9" font-family="monospace">4. Shortlist / Hire</text>
+
+  <!-- 5. Real-time Status Sync Back to Candidate -->
+  <path d="M670, 560 C 500, 600 450, 570 320, 560" fill="none" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrowCyan)" />
+  <rect x="430" y="565" width="125" height="22" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="438" y="580" fill="#38bdf8" font-size="10" font-weight="bold" font-family="monospace">5. Live Status Sync</text>
+
+  <!-- FOOTER LEGEND BAR -->
+  <g transform="translate(60, 775)">
+    <rect width="1280" height="30" rx="8" fill="#0b111e" />
+    <text x="20" y="20" fill="#64748b" font-size="11" font-family="monospace">
+      Engineered by Mrityunjay Kumar • Tech Stack: React 19 • TypeScript • Node.js • Express • PostgreSQL • JWT RBAC • AI ATS Scorer • Vercel Edge
+    </text>
+    <circle cx="1220" cy="15" r="4" fill="#10b981" />
+    <text x="1232" y="19" fill="#10b981" font-size="11" font-weight="bold">95% ATS Accuracy</text>
+  </g>
+</svg>
