@@ -1,0 +1,374 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 820" width="100%" height="100%" style="background:#070b13; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1329" />
+      <stop offset="50%" stop-color="#070b13" />
+      <stop offset="100%" stop-color="#091122" />
+    </linearGradient>
+
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#ef4444" />
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111827" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#0c1220" stop-opacity="0.95" />
+    </linearGradient>
+
+    <!-- Filters for Glow Effects -->
+    <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="glowPurple" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Arrow Marker -->
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 L3,4 Z" fill="#06b6d4" />
+    </marker>
+    <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 L3,4 Z" fill="#a855f7" />
+    </marker>
+    <marker id="arrowEmerald" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 L3,4 Z" fill="#10b981" />
+    </marker>
+  </defs>
+
+  <!-- Background Canvas with Subtle Tech Grid -->
+  <rect width="1400" height="820" fill="url(#bgGlow)" />
+  <g opacity="0.04" stroke="#ffffff" stroke-width="1">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" />
+    </pattern>
+    <rect width="1400" height="820" fill="url(#grid)" />
+  </g>
+
+  <!-- Ambient Glow Orbs -->
+  <circle cx="200" cy="150" r="140" fill="#06b6d4" opacity="0.06" filter="url(#glowCyan)" />
+  <circle cx="700" cy="380" r="180" fill="#6366f1" opacity="0.06" filter="url(#glowPurple)" />
+  <circle cx="1200" cy="550" r="160" fill="#10b981" opacity="0.05" filter="url(#glowCyan)" />
+
+  <!-- HEADER BAR -->
+  <g transform="translate(60, 40)">
+    <rect width="1280" height="70" rx="16" fill="#0e1626" stroke="#1e293b" stroke-width="1.5" />
+    
+    <!-- Badge -->
+    <rect x="24" y="20" width="160" height="30" rx="8" fill="#06b6d4" fill-opacity="0.15" stroke="#06b6d4" stroke-opacity="0.4" />
+    <circle cx="38" cy="35" r="4" fill="#06b6d4" />
+    <text x="50" y="39" fill="#38bdf8" font-size="11" font-weight="700" letter-spacing="1">SYSTEM ARCHITECTURE</text>
+
+    <!-- Title -->
+    <text x="200" y="42" fill="#ffffff" font-size="18" font-weight="800" letter-spacing="0.3">
+      AI Interview Copilot &amp; Seekho English — End-to-End Real-Time Data Flow
+    </text>
+
+    <!-- Subtitle Meta Tags -->
+    <text x="1000" y="42" fill="#94a3b8" font-size="12" font-family="monospace">
+      Latency: <tspan fill="#10b981" font-weight="bold">&lt;350ms</tspan> • Protocols: <tspan fill="#38bdf8">WS + REST</tspan>
+    </text>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- COLUMN 1: CLIENT TIER (Left) -->
+  <!-- ========================================== -->
+  <g transform="translate(60, 140)">
+    <!-- Container Box -->
+    <rect width="250" height="620" rx="20" fill="url(#cardGrad)" stroke="#06b6d4" stroke-opacity="0.4" stroke-width="1.5" />
+    
+    <!-- Column Header -->
+    <rect x="16" y="16" width="218" height="42" rx="10" fill="#06b6d4" fill-opacity="0.12" />
+    <text x="32" y="42" fill="#38bdf8" font-size="13" font-weight="800" letter-spacing="0.5">1. CLIENT TIER (FRONTEND)</text>
+
+    <!-- Box 1: Web & Mobile App -->
+    <g transform="translate(18, 75)">
+      <rect width="214" height="110" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#06b6d4" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#38bdf8" font-size="16">💻</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Next.js / React 19 UI</text>
+      <text x="48" y="40" fill="#64748b" font-size="10" font-family="monospace">Tailwind CSS • TypeScript</text>
+      <text x="14" y="65" fill="#94a3b8" font-size="11">• Audio MediaRecorder API</text>
+      <text x="14" y="82" fill="#94a3b8" font-size="11">• Interactive Question Cockpit</text>
+      <text x="14" y="99" fill="#94a3b8" font-size="11">• Emma Prompt Studio CMS</text>
+    </g>
+
+    <!-- Box 2: Real-Time Audio Capture -->
+    <g transform="translate(18, 205)">
+      <rect width="214" height="115" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#f59e0b" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#fbbf24" font-size="15">🎙️</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Audio Stream Manager</text>
+      <text x="48" y="40" fill="#64748b" font-size="10" font-family="monospace">PCM / Opus Binary Chunks</text>
+      <text x="14" y="66" fill="#94a3b8" font-size="11">• 16kHz Mono Sample Rate</text>
+      <text x="14" y="83" fill="#94a3b8" font-size="11">• WebSocket Stream Client</text>
+      <text x="14" y="100" fill="#94a3b8" font-size="11">• 250ms Audio Chunk Slices</text>
+    </g>
+
+    <!-- Box 3: Spoken Video Learning Studio -->
+    <g transform="translate(18, 340)">
+      <rect width="214" height="120" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#ec4899" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#f472b6" font-size="15">🎬</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Seekho English Studio</text>
+      <text x="48" y="40" fill="#64748b" font-size="10" font-family="monospace">Cloudinary Video Player</text>
+      <text x="14" y="66" fill="#94a3b8" font-size="11">• Spoken Video Phrase Sync</text>
+      <text x="14" y="83" fill="#94a3b8" font-size="11">• Hindi &lt;&gt; English Translations</text>
+      <text x="14" y="100" fill="#94a3b8" font-size="11">• Live Pronunciation Coach</text>
+    </g>
+
+    <!-- Box 4: Live Feedback Scorecard -->
+    <g transform="translate(18, 480)">
+      <rect width="214" height="115" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#10b981" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#34d399" font-size="15">📊</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Performance Report UI</text>
+      <text x="48" y="40" fill="#64748b" font-size="10" font-family="monospace">Instant Rubric Dashboard</text>
+      <text x="14" y="66" fill="#94a3b8" font-size="11">• Fluency &amp; Grammar Score</text>
+      <text x="14" y="83" fill="#94a3b8" font-size="11">• Technical Depth Rating</text>
+      <text x="14" y="100" fill="#94a3b8" font-size="11">• Actionable Improvement Tips</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- COLUMN 2: API GATEWAY & ORCHESTRATION (Middle-Left) -->
+  <!-- ========================================== -->
+  <g transform="translate(350, 140)">
+    <!-- Container Box -->
+    <rect width="260" height="620" rx="20" fill="url(#cardGrad)" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1.5" />
+    
+    <!-- Column Header -->
+    <rect x="16" y="16" width="228" height="42" rx="10" fill="#6366f1" fill-opacity="0.15" />
+    <text x="28" y="42" fill="#818cf8" font-size="13" font-weight="800" letter-spacing="0.5">2. API &amp; STREAM GATEWAY</text>
+
+    <!-- Box 1: WebSocket Orchestrator -->
+    <g transform="translate(18, 75)">
+      <rect width="224" height="145" rx="12" fill="#131d31" stroke="#4f46e5" stroke-opacity="0.4" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#6366f1" fill-opacity="0.25" />
+      <text x="21" y="31" fill="#a5b4fc" font-size="15">⚡</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">WebSocket Audio Broker</text>
+      <text x="48" y="40" fill="#818cf8" font-size="10" font-family="monospace">ws://interview-stream</text>
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• Binary Audio Chunk Ingestion</text>
+      <text x="14" y="86" fill="#cbd5e1" font-size="11">• Stream Session Heartbeat</text>
+      <text x="14" y="104" fill="#cbd5e1" font-size="11">• Asynchronous Backpressure</text>
+      <text x="14" y="122" fill="#cbd5e1" font-size="11">• Real-Time SSE Score Emitter</text>
+    </g>
+
+    <!-- Box 2: Node.js / Express Controllers -->
+    <g transform="translate(18, 240)">
+      <rect width="224" height="175" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#06b6d4" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#38bdf8" font-size="15">⚙️</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Express REST &amp; Auth Core</text>
+      <text x="48" y="40" fill="#64748b" font-size="10" font-family="monospace">Node.js ES Modules</text>
+      
+      <rect x="14" y="55" width="196" height="24" rx="6" fill="#0f172a" />
+      <text x="22" y="71" fill="#38bdf8" font-size="10" font-family="monospace">POST /api/evaluations/start</text>
+
+      <rect x="14" y="85" width="196" height="24" rx="6" fill="#0f172a" />
+      <text x="22" y="101" fill="#38bdf8" font-size="10" font-family="monospace">POST /api/emma/synthesize</text>
+
+      <rect x="14" y="115" width="196" height="24" rx="6" fill="#0f172a" />
+      <text x="22" y="131" fill="#38bdf8" font-size="10" font-family="monospace">GET  /api/lessons/stream-url</text>
+
+      <text x="14" y="160" fill="#94a3b8" font-size="11">• JWT Token Authorization</text>
+    </g>
+
+    <!-- Box 3: Rate Limiter & Security -->
+    <g transform="translate(18, 435)">
+      <rect width="224" height="160" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#ef4444" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#f87171" font-size="15">🛡️</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Security &amp; Rate Limiter</text>
+      <text x="48" y="40" fill="#64748b" font-size="10" font-family="monospace">Per-IP Leaky Bucket</text>
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• Audio Stream Size Caps (15MB)</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• Prompt Injection Guardrails</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• Session Validation &amp; Sanitizer</text>
+      <text x="14" y="128" fill="#cbd5e1" font-size="11">• CORS Origin Restriction</text>
+      <text x="14" y="148" fill="#10b981" font-size="11" font-weight="bold">✓ Zero Hallucination Mode</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- COLUMN 3: AI SPEECH & EVALUATION PIPELINE (Middle-Right) -->
+  <!-- ========================================== -->
+  <g transform="translate(650, 140)">
+    <!-- Container Box -->
+    <rect width="320" height="620" rx="20" fill="url(#cardGrad)" stroke="#a855f7" stroke-opacity="0.4" stroke-width="1.5" />
+    
+    <!-- Column Header -->
+    <rect x="16" y="16" width="288" height="42" rx="10" fill="#a855f7" fill-opacity="0.15" />
+    <text x="32" y="42" fill="#c084fc" font-size="13" font-weight="800" letter-spacing="0.5">3. AI SPEECH &amp; EVALUATION PIPELINE</text>
+
+    <!-- Box 1: Whisper ASR Engine -->
+    <g transform="translate(18, 75)">
+      <rect width="284" height="150" rx="12" fill="#131d31" stroke="#a855f7" stroke-opacity="0.3" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#a855f7" fill-opacity="0.25" />
+      <text x="21" y="31" fill="#e879f9" font-size="15">🎙️</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">OpenAI Whisper ASR Model</text>
+      <text x="48" y="40" fill="#c084fc" font-size="10" font-family="monospace">Sub-Second Audio Transcription</text>
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• Real-Time Voice-to-Text Pipeline</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• Accent &amp; Noise Normalization</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• Timestamped Word Tokens</text>
+      <text x="14" y="128" fill="#38bdf8" font-size="11" font-family="monospace">&gt; Transcript Stream &lt;280ms p95</text>
+    </g>
+
+    <!-- Box 2: Emma AI Prompt Synthesizer & RAG Context -->
+    <g transform="translate(18, 245)">
+      <rect width="284" height="165" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#06b6d4" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#38bdf8" font-size="15">🤖</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Emma AI Prompt Engine</text>
+      <text x="48" y="40" fill="#38bdf8" font-size="10" font-family="monospace">RAG Context + LLM Evaluator</text>
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• Candidate Resume Context Retrieval</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• English Difficulty Auto-Tiering</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• Contextual Follow-up Synthesis</text>
+      <text x="14" y="128" fill="#cbd5e1" font-size="11">• Strict Technical Rubrics Grounding</text>
+      <text x="14" y="148" fill="#10b981" font-size="11" font-family="monospace">✓ Gemini 1.5 Flash / GPT-4o Engine</text>
+    </g>
+
+    <!-- Box 3: Multimodal Scorecard Synthesizer -->
+    <g transform="translate(18, 430)">
+      <rect width="284" height="165" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#10b981" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#34d399" font-size="15">📈</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Rubric Evaluation Matrix</text>
+      <text x="48" y="40" fill="#34d399" font-size="10" font-family="monospace">Deterministic JSON Schema Output</text>
+      
+      <!-- Metrics Bars inside -->
+      <g transform="translate(14, 55)">
+        <text x="0" y="12" fill="#94a3b8" font-size="10">Grammar &amp; Vocabulary</text>
+        <text x="210" y="12" fill="#10b981" font-size="10" font-weight="bold">92%</text>
+        <rect y="16" width="256" height="5" rx="2.5" fill="#0f172a" />
+        <rect y="16" width="235" height="5" rx="2.5" fill="#10b981" />
+
+        <text x="0" y="36" fill="#94a3b8" font-size="10">Technical Problem Solving</text>
+        <text x="210" y="36" fill="#38bdf8" font-size="10" font-weight="bold">88%</text>
+        <rect y="40" width="256" height="5" rx="2.5" fill="#0f172a" />
+        <rect y="40" width="225" height="5" rx="2.5" fill="#38bdf8" />
+
+        <text x="0" y="60" fill="#94a3b8" font-size="10">Clarity &amp; Spoken Fluency</text>
+        <text x="210" y="60" fill="#a855f7" font-size="10" font-weight="bold">95%</text>
+        <rect y="64" width="256" height="5" rx="2.5" fill="#0f172a" />
+        <rect y="64" width="243" height="5" rx="2.5" fill="#a855f7" />
+
+        <text x="0" y="88" fill="#f59e0b" font-size="10" font-weight="bold">Actionable Step-by-Step Feedback</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- COLUMN 4: DATA STORAGE & VECTOR LAYER (Right) -->
+  <!-- ========================================== -->
+  <g transform="translate(1010, 140)">
+    <!-- Container Box -->
+    <rect width="330" height="620" rx="20" fill="url(#cardGrad)" stroke="#10b981" stroke-opacity="0.4" stroke-width="1.5" />
+    
+    <!-- Column Header -->
+    <rect x="16" y="16" width="298" height="42" rx="10" fill="#10b981" fill-opacity="0.12" />
+    <text x="28" y="42" fill="#34d399" font-size="13" font-weight="800" letter-spacing="0.5">4. STORAGE &amp; VECTOR RAG LAYER</text>
+
+    <!-- Box 1: PostgreSQL + pgvector -->
+    <g transform="translate(18, 75)">
+      <rect width="294" height="165" rx="12" fill="#131d31" stroke="#10b981" stroke-opacity="0.3" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#10b981" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#34d399" font-size="15">🗄️</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">PostgreSQL + pgvector</text>
+      <text x="48" y="40" fill="#34d399" font-size="10" font-family="monospace">Supabase Managed Database</text>
+      
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• HNSW Cosine Distance Index</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• 1,536-dim Text Embeddings</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• 500+ Spoken English Question Bank</text>
+      <text x="14" y="128" fill="#cbd5e1" font-size="11">• Candidate Interview Sessions Schema</text>
+      <text x="14" y="148" fill="#38bdf8" font-size="11" font-family="monospace">&gt; Prisma ORM Relational Models</text>
+    </g>
+
+    <!-- Box 2: Redis In-Memory Cache -->
+    <g transform="translate(18, 260)">
+      <rect width="294" height="155" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#ef4444" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#f87171" font-size="15">⚡</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Redis In-Memory Tier</text>
+      <text x="48" y="40" fill="#f87171" font-size="10" font-family="monospace">Sub-10ms Active Session Cache</text>
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• Live Audio Buffer &amp; Chunk Queue</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• Ephemeral WebSocket Connection IDs</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• Recurrent Question Cache</text>
+      <text x="14" y="128" fill="#cbd5e1" font-size="11">• Sliding Window Rate Limit Keys</text>
+      <text x="14" y="145" fill="#10b981" font-size="10" font-family="monospace">✓ p99 Cache Response: &lt;3ms</text>
+    </g>
+
+    <!-- Box 3: Cloudinary CDN Media Delivery -->
+    <g transform="translate(18, 435)">
+      <rect width="294" height="160" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#3b82f6" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#60a5fa" font-size="15">☁️</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Cloudinary Global CDN</text>
+      <text x="48" y="40" fill="#60a5fa" font-size="10" font-family="monospace">Adaptive Video Stream &amp; Media</text>
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• MP4 Adaptive Bitrate Streaming</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• Emma Spoken Video Lesson Master</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• Edge Video Caching in 200+ POPs</text>
+      <text x="14" y="128" fill="#cbd5e1" font-size="11">• Cloudinary Signed Secure Uploads</text>
+      <text x="14" y="148" fill="#38bdf8" font-size="11" font-family="monospace">&gt; Fast Global Video Delivery</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- CONNECTION ARROWS & DATA FLOW LINES -->
+  <!-- ========================================== -->
+  <!-- 1. Client Audio -> WebSocket Gateway -->
+  <path d="M310, 260 L350, 200" fill="none" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowCyan)" />
+  <rect x="295" y="210" width="70" height="20" rx="6" fill="#0f172a" stroke="#06b6d4" stroke-width="0.8" />
+  <text x="302" y="224" fill="#38bdf8" font-size="9" font-family="monospace">1. Audio Chunks</text>
+
+  <!-- 2. Gateway -> Whisper ASR -->
+  <path d="M610, 200 L650, 200" fill="none" stroke="#a855f7" stroke-width="2.5" marker-end="url(#arrowPurple)" />
+  <rect x="595" y="180" width="70" height="20" rx="6" fill="#0f172a" stroke="#a855f7" stroke-width="0.8" />
+  <text x="602" y="194" fill="#c084fc" font-size="9" font-family="monospace">2. Raw Stream</text>
+
+  <!-- 3. Whisper ASR -> Emma Prompt Engine -->
+  <path d="M790, 225 L790, 245" fill="none" stroke="#a855f7" stroke-width="2" marker-end="url(#arrowPurple)" />
+  <text x="800" y="238" fill="#c084fc" font-size="9" font-family="monospace">3. Text Tokens</text>
+
+  <!-- 4. Emma Prompt Engine <-> PostgreSQL Vector DB -->
+  <path d="M970, 320 L1010, 200" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="3,3" marker-end="url(#arrowEmerald)" />
+  <rect x="955" y="250" width="75" height="20" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="0.8" />
+  <text x="960" y="264" fill="#34d399" font-size="9" font-family="monospace">4. pgvector RAG</text>
+
+  <!-- 5. Gateway <-> Redis Session Cache -->
+  <path d="M610, 330 L1010, 330" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,4" />
+  <rect x="760" y="320" width="95" height="20" rx="6" fill="#0f172a" stroke="#ef4444" stroke-width="0.8" />
+  <text x="766" y="334" fill="#f87171" font-size="9" font-family="monospace">Redis Session Sync</text>
+
+  <!-- 6. Rubric Matrix -> SSE Response Back to Client -->
+  <path d="M650, 520 C 500, 560 450, 540 310, 540" fill="none" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrowEmerald)" />
+  <rect x="420" y="530" width="125" height="22" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="1" />
+  <text x="428" y="545" fill="#34d399" font-size="10" font-weight="bold" font-family="monospace">5. Real-Time Feedback SSE</text>
+
+  <!-- FOOTER LEGEND BAR -->
+  <g transform="translate(60, 775)">
+    <rect width="1280" height="30" rx="8" fill="#0b111e" />
+    <text x="20" y="20" fill="#64748b" font-size="11" font-family="monospace">
+      Engineered by Mrityunjay Kumar • Tech Stack: React 19 • Node.js • WebSocket • OpenAI Whisper ASR • pgvector • PostgreSQL • Redis • Cloudinary
+    </text>
+    <circle cx="1220" cy="15" r="4" fill="#10b981" />
+    <text x="1232" y="19" fill="#10b981" font-size="11" font-weight="bold">p99 &lt; 350ms</text>
+  </g>
+</svg>

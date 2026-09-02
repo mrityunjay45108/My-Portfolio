@@ -260,7 +260,7 @@ export const ProjectDetailsPage: React.FC = () => {
               </p>
               {project.architectureImage && (
                 <div
-                  className="mt-4 rounded-2xl overflow-hidden border border-slate-800 cursor-pointer"
+                  className="mt-4 rounded-2xl overflow-hidden border border-slate-800/80 bg-[#070b13] cursor-pointer group shadow-2xl relative"
                   onClick={() => {
                     const archIndex = galleryImages.findIndex((g) => g.url === project.architectureImage);
                     setCurrentImageIndex(archIndex >= 0 ? archIndex : 0);
@@ -269,9 +269,13 @@ export const ProjectDetailsPage: React.FC = () => {
                 >
                   <img
                     src={project.architectureImage}
-                    alt="Architecture Diagram"
-                    className="w-full object-cover max-h-[400px]"
+                    alt={`${project.title} Architecture & Data Flow Diagram`}
+                    className="w-full h-auto max-h-[600px] object-contain mx-auto group-hover:scale-[1.01] transition-transform duration-300"
                   />
+                  <div className="absolute bottom-3 right-3 bg-dark-950/80 backdrop-blur-md px-3 py-1 rounded-xl border border-slate-700/60 text-[11px] text-slate-300 flex items-center gap-1.5 pointer-events-none">
+                    <ImageIcon className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>Click to Zoom Diagram</span>
+                  </div>
                 </div>
               )}
             </div>

@@ -50,8 +50,8 @@ export const initialProjects: Project[] = [
     order: 2,
     githubUrl: 'https://github.com/mrityunjay45108/ai-english-learning-app',
     liveUrl: 'https://interview-copilot.demo.mrityunjay.dev',
-    architectureImage: '/images/projects/ai-interview-copilot/seekho-english-dashboard.png',
-    architectureDescription: 'High-throughput asynchronous architecture featuring Next.js/React frontend, Node.js/Express API orchestration, vector search indexing via PostgreSQL/pgvector, and WebSocket audio streaming for real-time speech-to-text.',
+    architectureImage: '/images/projects/ai-interview-copilot/ai-copilot-architecture-diagram.svg',
+    architectureDescription: 'High-throughput asynchronous architecture featuring Next.js/React frontend, Node.js/Express API orchestration, vector search indexing via PostgreSQL/pgvector, OpenAI Whisper ASR voice transcription, and WebSocket audio streaming.',
     videoUrl: 'https://res.cloudinary.com/dpd6q8ex4/video/upload/v1788341518/ai_inter_video_xz7fya.mp4',
     viewCount: 1240,
     technologies: [
