@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { config } from '../config/index.js';
-import prisma from '../database/prisma.js';
 
 export interface AuthPayload {
   userId: string;
@@ -34,23 +33,10 @@ export const authenticate = async (req: Request, res: Response, next: NextFuncti
 
     const decoded = jwt.verify(token, config.jwtSecret) as AuthPayload;
 
-    // Verify user still exists in database
-    const user = await prisma.user.findUnique({
-      where: { id: decoded.userId },
-      select: { id: true, email: true, role: true },
-    });
-
-    if (!user) {
-      return res.status(401).json({
-        success: false,
-        message: 'User no longer exists.',
-      });
-    }
-
     req.user = {
-      userId: user.id,
-      email: user.email,
-      role: user.role,
+      userId: decoded.userId,
+      email: decoded.email,
+      role: decoded.role,
     };
 
     next();
@@ -81,17 +67,11 @@ export const optionalAuth = async (req: Request, res: Response, next: NextFuncti
 
     if (token) {
       const decoded = jwt.verify(token, config.jwtSecret) as AuthPayload;
-      const user = await prisma.user.findUnique({
-        where: { id: decoded.userId },
-        select: { id: true, email: true, role: true },
-      });
-      if (user) {
-        req.user = {
-          userId: user.id,
-          email: user.email,
-          role: user.role,
-        };
-      }
+      req.user = {
+        userId: decoded.userId,
+        email: decoded.email,
+        role: decoded.role,
+      };
     }
   } catch (err) {
     // Ignore invalid token for optional auth
