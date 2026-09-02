@@ -12,6 +12,8 @@ router.get('/featured', ProjectController.getFeaturedProjects);
 router.get('/:slugOrId', optionalAuth, ProjectController.getProject);
 
 // Admin protected routes
+router.put('/reorder', authenticate, requireAdmin, ProjectController.reorderProjects);
+router.put('/reorder/positions', authenticate, requireAdmin, ProjectController.reorderProjects);
 router.post('/', authenticate, requireAdmin, validateRequest(projectSchema), ProjectController.createProject);
 router.put('/:id', authenticate, requireAdmin, validateRequest(projectSchema.partial()), ProjectController.updateProject);
 router.delete('/:id', authenticate, requireAdmin, ProjectController.deleteProject);

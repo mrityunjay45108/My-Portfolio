@@ -167,6 +167,12 @@ class ApiClient {
         body: JSON.stringify({ images }),
       });
     },
+    reorder: async (projects: { id: string; order: number }[]) => {
+      return this.request(`/projects/reorder`, {
+        method: 'PUT',
+        body: JSON.stringify({ projects }),
+      });
+    },
   };
 
   // BLOG

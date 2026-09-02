@@ -28,7 +28,8 @@ export const HomePage: React.FC = () => {
     const fetchProjects = async () => {
       try {
         const data = await api.projects.getAll();
-        setProjects(data);
+        const sorted = [...data].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+        setProjects(sorted);
       } catch (err) {
         console.error('Error loading projects:', err);
       } finally {
@@ -39,7 +40,7 @@ export const HomePage: React.FC = () => {
     fetchProjects();
   }, []);
 
-  const featuredProjects = projects.filter((p) => p.featured);
+  const featuredProjects = projects.filter((p) => p.featured && p.published !== false);
 
   return (
     <div className="min-h-screen bg-dark-950 text-slate-100 flex flex-col">

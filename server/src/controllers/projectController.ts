@@ -145,4 +145,17 @@ export class ProjectController {
       next(error);
     }
   }
+
+  static async reorderProjects(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { projects } = req.body;
+      await ProjectService.reorderProjects(projects);
+      res.status(200).json({
+        success: true,
+        message: 'Projects reordered successfully',
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }

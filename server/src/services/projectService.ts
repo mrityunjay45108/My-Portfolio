@@ -261,4 +261,15 @@ export class ProjectService {
       )
     );
   }
+
+  static async reorderProjects(projects: { id: string; order: number }[]) {
+    return prisma.$transaction(
+      projects.map((p) =>
+        prisma.project.update({
+          where: { id: p.id },
+          data: { order: p.order },
+        })
+      )
+    );
+  }
 }
