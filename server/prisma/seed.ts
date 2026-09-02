@@ -333,7 +333,7 @@ async function main() {
       background: 'Job seekers across engineering disciplines struggle with receiving objective, immediate, and actionable feedback on both their technical depth and spoken communication.',
       goals: '1. Build an end-to-end mock interview platform with sub-second feedback latency.\n2. Prevent LLM hallucinations using structured RAG retrieval.\n3. Provide multi-dimensional grading (algorithms, architecture, behavioral alignment).',
       architecture: 'Asynchronous event-driven architecture using Next.js on the edge, Node.js orchestration backend, PostgreSQL with pgvector for contextual similarity search, and WebSocket duplex streaming.',
-      architectureImage: '/images/projects/ai-interview-copilot/seekho-english-dashboard.png',
+      architectureImage: '/images/architecture/ai-copilot-architecture.svg',
       implementation: 'Implemented custom chunking and semantic embeddings of 5,000+ real tech interview transcripts. Integrated streaming audio transcription via Whisper WebSockets and structured evaluation schema enforcement using Zod + OpenAI Function Calling.',
       challenges: 'Managing WebSocket audio backpressure during high-jitter network conditions and ensuring LLM evaluation consistency across multiple runs.',
       solutions: 'Created a client-side audio ring buffer with adaptive chunking and implemented temperature stabilization with strict JSON schema validation for deterministic scoring.',
