@@ -48,10 +48,10 @@ export const EducationSection: React.FC = () => {
                     <p className="text-xs text-slate-400 font-mono mt-0.5">{edu.university}</p>
                   )}
                   {edu.grade && (
-                    <p className="text-xs text-emerald-400 font-mono mt-1 flex items-center gap-1">
-                      <Award className="w-3.5 h-3.5" />
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-300 font-mono font-medium mt-2.5">
+                      <Award className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                       <span>{edu.grade}</span>
-                    </p>
+                    </div>
                   )}
                   <div className="flex items-center gap-1 text-xs text-slate-500 font-mono mt-2">
                     <MapPin className="w-3.5 h-3.5" />

@@ -232,10 +232,10 @@ export const AdminEducationPage: React.FC = () => {
                     <p className="text-xs text-slate-400 font-mono mt-0.5">{edu.university}</p>
                   )}
                   {edu.grade && (
-                    <p className="text-xs text-emerald-400 font-mono mt-1 flex items-center gap-1">
-                      <Award className="w-3.5 h-3.5" />
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-xs font-mono font-medium text-emerald-300 mt-2">
+                      <Award className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
                       <span>{edu.grade}</span>
-                    </p>
+                    </div>
                   )}
                   <div className="flex items-center gap-1 text-xs text-slate-500 font-mono mt-2">
                     <MapPin className="w-3.5 h-3.5" />
@@ -311,10 +311,11 @@ export const AdminEducationPage: React.FC = () => {
               onChange={(e) => setFormData({ ...formData, university: e.target.value })}
             />
             <Input
-              label="Grade / CGPA / Honors (Optional)"
-              placeholder="CGPA: 8.4 / First Class"
+              label="Score: CGPA / Percentage / Division (Optional)"
+              placeholder="e.g. 8.4 CGPA or 85.6% or CGPA: 8.2 / 10"
               value={formData.grade}
               onChange={(e) => setFormData({ ...formData, grade: e.target.value })}
+              helperText="Displays as a verified score badge on public portfolio"
             />
           </div>
 
