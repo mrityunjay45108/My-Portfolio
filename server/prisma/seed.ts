@@ -164,7 +164,7 @@ async function main() {
       liveUrl: 'https://interview-copilot.demo.mrityunjay.dev',
       architectureImage: '/images/projects/ai-interview-copilot/seekho-english-dashboard.png',
       architectureDescription: 'High-throughput asynchronous architecture featuring Next.js frontend, Node.js/Express API orchestration, vector search indexing via PostgreSQL/pgvector, and WebSocket audio streaming for real-time speech-to-text.',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+      videoUrl: 'https://res.cloudinary.com/dpd6q8ex4/video/upload/v1788341518/ai_inter_video_xz7fya.mp4',
       technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Prisma', 'RAG', 'LLM', 'Tailwind CSS'],
       features: [
         { title: 'Seekho English & Emma AI Prompt Studio', description: 'Centralized admin control center for publishing video modules, spoken phrases, and Hindi-English translations.' },

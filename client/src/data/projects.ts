@@ -52,7 +52,7 @@ export const initialProjects: Project[] = [
     liveUrl: 'https://interview-copilot.demo.mrityunjay.dev',
     architectureImage: '/images/projects/ai-interview-copilot/seekho-english-dashboard.png',
     architectureDescription: 'High-throughput asynchronous architecture featuring Next.js/React frontend, Node.js/Express API orchestration, vector search indexing via PostgreSQL/pgvector, and WebSocket audio streaming for real-time speech-to-text.',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    videoUrl: 'https://res.cloudinary.com/dpd6q8ex4/video/upload/v1788341518/ai_inter_video_xz7fya.mp4',
     viewCount: 1240,
     technologies: [
       { technology: { id: 't1', name: 'React', category: 'Frontend' } },
