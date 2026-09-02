@@ -150,32 +150,33 @@ async function main() {
       ]
     },
     {
-      title: 'AI Interview Copilot & Mock Evaluator',
+      title: 'AI Interview Copilot & Seekho English Learning App',
       slug: 'ai-interview-copilot',
       shortDescription: 'AI-powered mock interview and real-time candidate assessment platform with automated question synthesis, speech evaluation, and comprehensive performance analytics.',
-      description: 'An intelligent AI-driven interview preparation platform designed to simulate realistic technical and behavioral interviews. Leverages retrieval-augmented generation (RAG) and low-latency LLM evaluation pipelines to deliver actionable, contextual feedback to job seekers and recruitment teams.',
+      description: 'An intelligent AI-driven English learning & interview preparation platform designed to simulate realistic technical and behavioral interviews. Leverages retrieval-augmented generation (RAG), Emma AI prompt studio, and low-latency LLM evaluation pipelines to deliver actionable, contextual feedback to job seekers and learners.',
       category: 'AI / GenAI',
       featured: true,
       published: true,
       order: 2,
-      githubUrl: 'https://github.com/mrityunjay45108/ai-interview-copilot',
+      githubUrl: 'https://github.com/mrityunjay45108/ai-english-learning-app',
       githubOwner: 'mrityunjay45108',
-      githubRepository: 'ai-interview-copilot',
+      githubRepository: 'ai-english-learning-app',
       liveUrl: 'https://interview-copilot.demo.mrityunjay.dev',
-      architectureImage: '/projects/ai-interview-copilot/architecture.webp',
+      architectureImage: '/images/projects/ai-interview-copilot/seekho-english-dashboard.png',
       architectureDescription: 'High-throughput asynchronous architecture featuring Next.js frontend, Node.js/Express API orchestration, vector search indexing via PostgreSQL/pgvector, and WebSocket audio streaming for real-time speech-to-text.',
       videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
       technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Prisma', 'RAG', 'LLM', 'Tailwind CSS'],
       features: [
+        { title: 'Seekho English & Emma AI Prompt Studio', description: 'Centralized admin control center for publishing video modules, spoken phrases, and Hindi-English translations.' },
         { title: 'Dynamic Question Engine', description: 'Contextual interview prompt generation tailored to candidate resume, role, and experience level.' },
         { title: 'Real-Time Voice Analysis', description: 'Sub-second speech recognition and conversational response evaluation.' },
         { title: 'Multimodal Scorecard', description: 'Automated rubrics evaluating technical depth, communication clarity, problem-solving, and time efficiency.' },
         { title: 'Vectorized Topic Search', description: 'Retrieves relevant company-specific interview question patterns from a dense knowledge base.' }
       ],
       images: [
-        { url: '/projects/ai-interview-copilot/screenshot-1.webp', altText: 'Interview session dashboard with real-time feedback indicator', order: 1 },
-        { url: '/projects/ai-interview-copilot/screenshot-2.webp', altText: 'Detailed analytics scorecard and skill breakdown', order: 2 },
-        { url: '/projects/ai-interview-copilot/architecture.webp', altText: 'System architecture diagram and data pipeline', order: 3 }
+        { url: '/images/projects/ai-interview-copilot/seekho-english-dashboard.png', altText: 'Seekho English Admin Control Center & Emma AI Prompt Studio', order: 1 },
+        { url: '/projects/ai-interview-copilot/screenshot-1.webp', altText: 'Interview session dashboard with real-time feedback indicator', order: 2 },
+        { url: '/projects/ai-interview-copilot/screenshot-2.webp', altText: 'Detailed analytics scorecard and skill breakdown', order: 3 },
       ]
     },
     {
@@ -735,17 +736,17 @@ Multi-agent systems represent the future of software automation. Mastering state
     },
     {
       owner: 'mrityunjay45108',
-      name: 'ai-interview-copilot',
-      fullName: 'mrityunjay45108/ai-interview-copilot',
-      description: 'AI-powered mock interview and real-time candidate assessment platform with automated question synthesis and speech evaluation.',
-      url: 'https://github.com/mrityunjay45108/ai-interview-copilot',
+      name: 'ai-english-learning-app',
+      fullName: 'mrityunjay45108/ai-english-learning-app',
+      description: 'AI-powered English learning platform & mock interview copilot with Emma AI prompt studio, real-time speech evaluation, and mobile app sync.',
+      url: 'https://github.com/mrityunjay45108/ai-english-learning-app',
       language: 'TypeScript',
       stars: 48,
       forks: 12,
-      topics: ['ai', 'rag', 'nextjs', 'webrtc', 'llm', 'speech-to-text'],
+      topics: ['ai', 'rag', 'nextjs', 'react-native', 'llm', 'speech-to-text'],
       featured: true,
       displayOrder: 2,
-      customDescription: 'Flagship open-source AI mock interview platform utilizing RAG and real-time voice streaming.',
+      customDescription: 'Flagship open-source AI English learning and mock interview copilot utilizing Emma AI prompt studio and real-time voice streaming.',
       projectSlug: 'ai-interview-copilot',
     },
     {
@@ -798,6 +799,16 @@ Multi-agent systems represent the future of software automation. Mastering state
   for (const repo of githubRepos) {
     const { projectSlug, ...repoData } = repo;
     const project = await prisma.project.findUnique({ where: { slug: projectSlug } });
+
+    if (project) {
+      await prisma.gitHubRepository.updateMany({
+        where: {
+          projectId: project.id,
+          NOT: { fullName: repo.fullName },
+        },
+        data: { projectId: null },
+      });
+    }
 
     await prisma.gitHubRepository.upsert({
       where: { fullName: repo.fullName },

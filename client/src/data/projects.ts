@@ -40,18 +40,18 @@ export const initialProjects: Project[] = [
   },
   {
     id: 'proj-1',
-    title: 'AI Interview Copilot & Mock Evaluator',
+    title: 'AI Interview Copilot & Seekho English Learning App',
     slug: 'ai-interview-copilot',
     shortDescription: 'AI-powered mock interview and real-time candidate assessment platform with automated question synthesis, speech evaluation, and comprehensive performance analytics.',
-    description: 'An intelligent AI-driven interview preparation platform designed to simulate realistic technical and behavioral interviews. Leverages retrieval-augmented generation (RAG) and low-latency LLM evaluation pipelines to deliver actionable, contextual feedback to job seekers and recruitment teams.',
+    description: 'An intelligent AI-driven English learning & interview preparation platform designed to simulate realistic technical and behavioral interviews. Leverages retrieval-augmented generation (RAG), Emma AI prompt studio, and low-latency LLM evaluation pipelines to deliver actionable, contextual feedback to job seekers and learners.',
     category: 'AI / GenAI',
     featured: true,
     published: true,
     order: 2,
-    githubUrl: 'https://github.com/mrityunjay45108/ai-interview-copilot',
+    githubUrl: 'https://github.com/mrityunjay45108/ai-english-learning-app',
     liveUrl: 'https://interview-copilot.demo.mrityunjay.dev',
-    architectureImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80',
-    architectureDescription: 'High-throughput asynchronous architecture featuring Next.js frontend, Node.js/Express API orchestration, vector search indexing via PostgreSQL/pgvector, and WebSocket audio streaming for real-time speech-to-text.',
+    architectureImage: '/images/projects/ai-interview-copilot/seekho-english-dashboard.png',
+    architectureDescription: 'High-throughput asynchronous architecture featuring Next.js/React frontend, Node.js/Express API orchestration, vector search indexing via PostgreSQL/pgvector, and WebSocket audio streaming for real-time speech-to-text.',
     videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     viewCount: 1240,
     technologies: [
@@ -65,15 +65,15 @@ export const initialProjects: Project[] = [
       { technology: { id: 't8', name: 'Tailwind CSS', category: 'Frontend' } },
     ],
     features: [
+      { title: 'Seekho English & Emma AI Prompt Studio', description: 'Centralized admin control center for publishing video modules, spoken phrases, and Hindi-English translations.' },
       { title: 'Dynamic Question Engine', description: 'Contextual interview prompt generation tailored to candidate resume, role, and experience level.' },
       { title: 'Real-Time Voice Analysis', description: 'Sub-second speech recognition and conversational response evaluation.' },
-      { title: 'Multimodal Scorecard', description: 'Automated rubrics evaluating technical depth, communication clarity, problem-solving, and time efficiency.' },
-      { title: 'Vectorized Topic Search', description: 'Retrieves relevant company-specific interview question patterns from a dense knowledge base.' }
+      { title: 'Multimodal Scorecard', description: 'Automated rubrics evaluating technical depth, communication clarity, problem-solving, and time efficiency.' }
     ],
     images: [
-      { id: 'img-1', url: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80', altText: 'AI Interview Copilot interactive cockpit dashboard', order: 1 },
-      { id: 'img-2', url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80', altText: 'Real-time performance analytics scorecard', order: 2 },
-      { id: 'img-3', url: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80', altText: 'Asynchronous streaming architecture diagram', order: 3 },
+      { id: 'seekho-img-1', url: '/images/projects/ai-interview-copilot/seekho-english-dashboard.png', altText: 'Seekho English Admin Control Center & Emma AI Prompt Studio', order: 1 },
+      { id: 'img-1', url: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80', altText: 'AI Interview & English speech practice dashboard', order: 2 },
+      { id: 'img-2', url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80', altText: 'Real-time performance analytics scorecard', order: 3 },
     ]
   },
   {
