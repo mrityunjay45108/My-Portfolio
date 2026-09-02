@@ -11,6 +11,8 @@ import {
   ArrowDown,
   ExternalLink,
   CheckCircle2,
+  Globe,
+  Lock,
 } from 'lucide-react';
 import { AdminLayout } from '../../components/layout/AdminLayout';
 import { api } from '../../services/api';
@@ -256,7 +258,7 @@ export const AdminProjectFormPage: React.FC = () => {
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Select
               label="Category"
               value={formData.category}
@@ -269,26 +271,71 @@ export const AdminProjectFormPage: React.FC = () => {
                 { value: 'DevOps & Cloud', label: 'DevOps & Cloud' },
               ]}
             />
-            <div className="flex items-center gap-4 pt-6 sm:col-span-2">
-              <label className="flex items-center gap-2 text-xs font-medium text-slate-300 cursor-pointer">
+
+            <div className="flex items-center pt-6">
+              <label className="flex items-center gap-2 text-xs font-medium text-slate-300 cursor-pointer bg-dark-950/80 px-4 py-3 rounded-xl border border-slate-800 hover:border-slate-700 w-full">
                 <input
                   type="checkbox"
                   checked={formData.featured}
                   onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                  className="rounded bg-dark-950 border-slate-700 text-brand-600 focus:ring-brand-500 w-4 h-4"
+                  className="rounded bg-dark-950 border-slate-700 text-amber-500 focus:ring-amber-500 w-4 h-4"
                 />
-                <span>Featured on Homepage</span>
+                <span className="font-semibold text-slate-200">⭐ Featured on Homepage Showcase</span>
               </label>
+            </div>
+          </div>
 
-              <label className="flex items-center gap-2 text-xs font-medium text-slate-300 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={formData.published}
-                  onChange={(e) => setFormData({ ...formData, published: e.target.checked })}
-                  className="rounded bg-dark-950 border-slate-700 text-brand-600 focus:ring-brand-500 w-4 h-4"
-                />
-                <span>Published (Visible to Visitors)</span>
-              </label>
+          {/* Public vs Private Visibility Selector */}
+          <div className="space-y-2 pt-1">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300">
+              Project Visibility Status
+            </label>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={() => setFormData({ ...formData, published: true })}
+                className={`flex items-start gap-3 p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+                  formData.published
+                    ? 'bg-emerald-500/10 border-emerald-500/50 shadow-lg shadow-emerald-500/5'
+                    : 'bg-dark-950/60 border-slate-800 opacity-60 hover:opacity-90'
+                }`}
+              >
+                <div className={`p-2 rounded-xl ${formData.published ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-800 text-slate-400'}`}>
+                  <Globe className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-sm text-slate-100">Public (Published)</span>
+                    {formData.published && <CheckCircle2 className="w-4 h-4 text-emerald-400" />}
+                  </div>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Visible to recruiters, clients, and all visitors on your portfolio.
+                  </p>
+                </div>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setFormData({ ...formData, published: false })}
+                className={`flex items-start gap-3 p-4 rounded-2xl border text-left transition-all cursor-pointer ${
+                  !formData.published
+                    ? 'bg-amber-500/10 border-amber-500/50 shadow-lg shadow-amber-500/5'
+                    : 'bg-dark-950/60 border-slate-800 opacity-60 hover:opacity-90'
+                }`}
+              >
+                <div className={`p-2 rounded-xl ${!formData.published ? 'bg-amber-500/20 text-amber-400' : 'bg-slate-800 text-slate-400'}`}>
+                  <Lock className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-sm text-slate-100">Private (Draft)</span>
+                    {!formData.published && <CheckCircle2 className="w-4 h-4 text-amber-400" />}
+                  </div>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Hidden from public portfolio. Only you (Admin) can view and edit it.
+                  </p>
+                </div>
+              </button>
             </div>
           </div>
 

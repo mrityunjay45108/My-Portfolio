@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Plus, Edit2, Trash2, ExternalLink, Star, Eye, Search, Layers } from 'lucide-react';
+import { Plus, Edit2, Trash2, ExternalLink, Star, Eye, Search, Globe, Lock, CheckCircle2 } from 'lucide-react';
 import { AdminLayout } from '../../components/layout/AdminLayout';
 import { Project } from '../../types';
 import { api } from '../../services/api';
@@ -49,10 +49,29 @@ export const AdminProjectsPage: React.FC = () => {
   const toggleFeatured = async (project: Project) => {
     try {
       await api.projects.update(project.id, { featured: !project.featured });
-      success(`Project marked as ${!project.featured ? 'featured' : 'standard'}`);
+      success(`Project marked as ${!project.featured ? 'featured on homepage' : 'standard'}`);
       fetchProjects();
     } catch (err: any) {
       toastError(err.message || 'Failed to update project');
+    }
+  };
+
+  const togglePublished = async (project: Project) => {
+    const newStatus = !project.published;
+    try {
+      // Optimistic local update
+      setProjects((prev) =>
+        prev.map((p) => (p.id === project.id ? { ...p, published: newStatus } : p))
+      );
+      await api.projects.update(project.id, { published: newStatus });
+      success(
+        newStatus
+          ? `🌐 "${project.title}" is now PUBLIC (Visible to all visitors)`
+          : `🔒 "${project.title}" is now PRIVATE (Hidden from public portfolio)`
+      );
+    } catch (err: any) {
+      toastError(err.message || 'Failed to change project visibility');
+      fetchProjects();
     }
   };
 
@@ -73,21 +92,29 @@ export const AdminProjectsPage: React.FC = () => {
       }
     >
       <div className="space-y-6">
-        {/* Search */}
-        <div className="flex items-center justify-between gap-4">
-          <div className="w-full sm:w-72">
+        {/* Search & Info */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="w-full sm:w-80">
             <Input
               type="text"
-              placeholder="Search projects..."
+              placeholder="Search projects by title or tech..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               leftIcon={<Search className="w-4 h-4 text-slate-500" />}
               className="py-2 text-xs"
             />
           </div>
-          <span className="text-xs font-mono text-slate-500">
-            {filtered.length} total projects
-          </span>
+          <div className="flex items-center gap-3 text-xs font-mono text-slate-400">
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              {projects.filter((p) => p.published).length} Public
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-amber-400" />
+              {projects.filter((p) => !p.published).length} Private
+            </span>
+            <span>• {filtered.length} total</span>
+          </div>
         </div>
 
         {/* Projects Table */}
@@ -99,7 +126,7 @@ export const AdminProjectsPage: React.FC = () => {
                   <th className="py-4 px-6">Project</th>
                   <th className="py-4 px-4">Category</th>
                   <th className="py-4 px-4 text-center">Featured</th>
-                  <th className="py-4 px-4 text-center">Status</th>
+                  <th className="py-4 px-4 text-center">Visibility (Click to Toggle)</th>
                   <th className="py-4 px-6 text-right">Actions</th>
                 </tr>
               </thead>
@@ -136,16 +163,35 @@ export const AdminProjectsPage: React.FC = () => {
                             ? 'bg-amber-500/10 text-amber-400 border-amber-500/30'
                             : 'bg-dark-950 text-slate-600 border-slate-800 hover:text-slate-400'
                         }`}
-                        title={proj.featured ? 'Featured on homepage' : 'Not featured'}
+                        title={proj.featured ? 'Featured on homepage (Click to unfeature)' : 'Not featured (Click to feature)'}
                       >
                         <Star className="w-4 h-4 fill-current" />
                       </button>
                     </td>
 
+                    {/* Interactive Public / Private 1-Click Toggle */}
                     <td className="py-4 px-4 text-center">
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-mono font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                        Published
-                      </span>
+                      <button
+                        onClick={() => togglePublished(proj)}
+                        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium transition-all border cursor-pointer ${
+                          proj.published
+                            ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30 hover:bg-emerald-500/25 hover:border-emerald-400'
+                            : 'bg-amber-500/15 text-amber-300 border-amber-500/30 hover:bg-amber-500/25 hover:border-amber-400'
+                        }`}
+                        title={proj.published ? 'Currently PUBLIC: Visible to everyone. Click to make PRIVATE.' : 'Currently PRIVATE: Hidden draft. Click to make PUBLIC.'}
+                      >
+                        {proj.published ? (
+                          <>
+                            <Globe className="w-3.5 h-3.5 text-emerald-400" />
+                            <span>Public</span>
+                          </>
+                        ) : (
+                          <>
+                            <Lock className="w-3.5 h-3.5 text-amber-400" />
+                            <span>Private</span>
+                          </>
+                        )}
+                      </button>
                     </td>
 
                     <td className="py-4 px-6 text-right">
@@ -155,7 +201,7 @@ export const AdminProjectsPage: React.FC = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
-                          title="Preview public page"
+                          title="Preview project page"
                         >
                           <Eye className="w-4 h-4" />
                         </Link>
