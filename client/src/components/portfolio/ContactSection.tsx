@@ -3,9 +3,9 @@ import { Mail, Send, Copy, Check, Sparkles, MessageSquare } from 'lucide-react';
 import { personalInfo } from '../../data/personal';
 import { api } from '../../services/api';
 import { useToast } from '../../context/ToastContext';
-import { Button } from '../ui/Button';
-import { Input } from '../ui/Input';
-import { Textarea } from '../ui/Textarea';
+import { Button } from '../../components/ui/Button';
+import { Input } from '../../components/ui/Input';
+import { Textarea } from '../../components/ui/Textarea';
 import { GithubIcon, LinkedinIcon } from '../ui/Icons';
 
 export const ContactSection: React.FC = () => {
@@ -137,7 +137,7 @@ export const ContactSection: React.FC = () => {
                       <LinkedinIcon size={16} className="text-blue-400" />
                       LinkedIn Profile
                     </span>
-                    <span className="text-xs font-mono text-slate-500">mrityunjay45108</span>
+                    <span className="text-xs font-mono text-slate-500">mrityunjay-kumar</span>
                   </a>
                 </div>
               </div>
