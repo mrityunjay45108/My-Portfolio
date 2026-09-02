@@ -229,6 +229,9 @@ export class ProjectService {
   }
 
   static async deleteProject(id: string) {
+    await prisma.projectTechnology.deleteMany({ where: { projectId: id } });
+    await prisma.projectFeature.deleteMany({ where: { projectId: id } });
+    await prisma.projectImage.deleteMany({ where: { projectId: id } });
     return prisma.project.delete({
       where: { id },
     });
