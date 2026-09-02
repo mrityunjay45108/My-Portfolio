@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%" style="background:#090d16; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <linearGradient id="storeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e1726" />
+      <stop offset="100%" stop-color="#070b13" />
+    </linearGradient>
+    <linearGradient id="accentBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="680" fill="url(#storeGrad)" />
+
+  <!-- Mock Browser Window -->
+  <g transform="translate(40, 30)">
+    <!-- Browser Top Bar -->
+    <rect width="1120" height="620" rx="16" fill="#0b111e" stroke="#1e293b" stroke-width="1.5" />
+    
+    <!-- Window Dots -->
+    <circle cx="30" cy="24" r="5" fill="#ef4444" />
+    <circle cx="48" cy="24" r="5" fill="#f59e0b" />
+    <circle cx="66" cy="24" r="5" fill="#10b981" />
+
+    <!-- Address Bar -->
+    <rect x="100" y="12" width="600" height="24" rx="6" fill="#070b13" stroke="#1e293b" stroke-width="0.8" />
+    <text x="120" y="28" fill="#64748b" font-size="11" font-family="monospace">https://ecommerce.mrityunjay.dev/products</text>
+
+    <!-- Navigation Header -->
+    <g transform="translate(30, 60)">
+      <text x="0" y="24" fill="#ffffff" font-size="18" font-weight="900">NIKE AIR STORE</text>
+      <text x="200" y="22" fill="#94a3b8" font-size="12">Explore Catalog</text>
+      <text x="320" y="22" fill="#94a3b8" font-size="12">Categories</text>
+      <text x="420" y="22" fill="#94a3b8" font-size="12">Deals</text>
+
+      <rect x="850" y="5" width="120" height="28" rx="8" fill="#2563eb" />
+      <text x="872" y="23" fill="#ffffff" font-size="11" font-weight="700">🛒 Cart (3)</text>
+    </g>
+
+    <!-- Hero Banner Inside App -->
+    <g transform="translate(30, 110)">
+      <rect width="1060" height="180" rx="14" fill="#111c30" stroke="#1e293b" stroke-width="1" />
+      <text x="40" y="60" fill="#38bdf8" font-size="12" font-weight="700" letter-spacing="1">NEW COLLECTION 2026</text>
+      <text x="40" y="100" fill="#ffffff" font-size="28" font-weight="900">Engineered for Peak Performance</text>
+      <text x="40" y="130" fill="#94a3b8" font-size="13">Event-driven inventory sync with sub-10ms Redis search response.</text>
+      <rect x="40" y="145" width="130" height="24" rx="6" fill="#06b6d4" fill-opacity="0.2" stroke="#06b6d4" stroke-width="0.8" />
+      <text x="50" y="161" fill="#38bdf8" font-size="10" font-weight="bold">⚡ Fast 2-Day Shipping</text>
+      
+      <!-- Sneaker visual icon / graphic -->
+      <text x="820" y="120" font-size="90">👟</text>
+    </g>
+
+    <!-- Product Grid -->
+    <g transform="translate(30, 310)">
+      <!-- Product 1 -->
+      <rect x="0" y="0" width="330" height="220" rx="12" fill="#0e1726" stroke="#1e293b" stroke-width="1" />
+      <text x="140" y="80" font-size="50">👟</text>
+      <text x="20" y="145" fill="#ffffff" font-size="14" font-weight="700">Air Zoom Pegasus 40</text>
+      <text x="20" y="165" fill="#64748b" font-size="11">Running / Mens Road Shoes</text>
+      <text x="20" y="195" fill="#10b981" font-size="15" font-weight="bold">$139.99</text>
+      <rect x="220" y="175" width="90" height="28" rx="6" fill="#2563eb" />
+      <text x="238" y="193" fill="#ffffff" font-size="10" font-weight="bold">Add to Cart</text>
+
+      <!-- Product 2 -->
+      <rect x="365" y="0" width="330" height="220" rx="12" fill="#0e1726" stroke="#1e293b" stroke-width="1" />
+      <text x="505" y="80" font-size="50">🎒</text>
+      <text x="385" y="145" fill="#ffffff" font-size="14" font-weight="700">Pro Elite Training Bag</text>
+      <text x="385" y="165" fill="#64748b" font-size="11">Accessories / Waterproof</text>
+      <text x="385" y="195" fill="#10b981" font-size="15" font-weight="bold">$79.99</text>
+      <rect x="585" y="175" width="90" height="28" rx="6" fill="#2563eb" />
+      <text x="603" y="193" fill="#ffffff" font-size="10" font-weight="bold">Add to Cart</text>
+
+      <!-- Product 3 -->
+      <rect x="730" y="0" width="330" height="220" rx="12" fill="#0e1726" stroke="#1e293b" stroke-width="1" />
+      <text x="870" y="80" font-size="50">🎧</text>
+      <text x="750" y="145" fill="#ffffff" font-size="14" font-weight="700">Active Wireless Pro</text>
+      <text x="750" y="165" fill="#64748b" font-size="11">Audio / Active Noise Canceling</text>
+      <text x="750" y="195" fill="#10b981" font-size="15" font-weight="bold">$199.99</text>
+      <rect x="950" y="175" width="90" height="28" rx="6" fill="#2563eb" />
+      <text x="968" y="193" fill="#ffffff" font-size="10" font-weight="bold">Add to Cart</text>
+    </g>
+  </g>
+</svg>

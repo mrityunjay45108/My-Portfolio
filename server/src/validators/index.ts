@@ -26,6 +26,12 @@ export const projectSchema = z.object({
     title: z.string().min(1),
     description: z.string().min(1),
   })).optional(),
+  images: z.array(z.object({
+    id: z.string().optional(),
+    url: z.string().min(1),
+    altText: z.string().nullable().optional(),
+    order: z.number().int().optional(),
+  })).optional(),
 });
 
 export const projectImageSchema = z.object({

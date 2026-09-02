@@ -220,8 +220,8 @@ async function main() {
       githubOwner: 'mrityunjay45108',
       githubRepository: 'scalable-ecommerce-platform',
       liveUrl: 'https://ecommerce.demo.mrityunjay.dev',
-      architectureImage: '/projects/ecommerce/architecture.webp',
-      architectureDescription: 'Kubernetes-orchestrated microservices cluster with Kong API Gateway, Dockerized container instances, and PostgreSQL sharded databases.',
+      architectureImage: '/images/projects/ecommerce/ecommerce-architecture-diagram.svg',
+      architectureDescription: 'Kubernetes-orchestrated microservices cluster with Kong API Gateway, Dockerized container instances, RabbitMQ event bus, and PostgreSQL sharded databases.',
       videoUrl: '',
       technologies: ['Node.js', 'Express.js', 'Docker', 'Kubernetes', 'PostgreSQL', 'Redis', 'React', 'Tailwind CSS'],
       features: [
@@ -231,8 +231,8 @@ async function main() {
         { title: 'Admin Analytics Dashboard', description: 'Real-time sales telemetry, inventory threshold alerts, and revenue metrics.' }
       ],
       images: [
-        { url: '/projects/ecommerce/screenshot-1.webp', altText: 'Product storefront with instant faceted search and filter', order: 1 },
-        { url: '/projects/ecommerce/screenshot-2.webp', altText: 'Checkout workflow and order status tracker', order: 2 }
+        { url: '/images/projects/ecommerce/ecommerce-storefront.svg', altText: 'Product storefront with instant faceted search and filter', order: 1 },
+        { url: '/images/projects/ecommerce/ecommerce-architecture-diagram.svg', altText: 'Microservices architecture diagram and data flow', order: 2 }
       ]
     },
     {

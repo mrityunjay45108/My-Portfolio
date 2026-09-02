@@ -124,8 +124,8 @@ export const initialProjects: Project[] = [
     order: 4,
     githubUrl: 'https://github.com/mrityunjay45108/scalable-ecommerce-platform',
     liveUrl: 'https://ecommerce.demo.mrityunjay.dev',
-    architectureImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-    architectureDescription: 'Kubernetes-orchestrated microservices cluster with Kong API Gateway, Dockerized container instances, and PostgreSQL sharded databases.',
+    architectureImage: '/images/projects/ecommerce/ecommerce-architecture-diagram.svg',
+    architectureDescription: 'Kubernetes-orchestrated microservices cluster with Kong API Gateway, Dockerized container instances, RabbitMQ event broker, and PostgreSQL sharded databases.',
     viewCount: 1050,
     technologies: [
       { technology: { id: 't3', name: 'Node.js', category: 'Backend' } },
@@ -144,8 +144,8 @@ export const initialProjects: Project[] = [
       { title: 'Admin Analytics Dashboard', description: 'Real-time sales telemetry, inventory threshold alerts, and revenue metrics.' }
     ],
     images: [
-      { id: 'img-6', url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80', altText: 'E-commerce storefront and live checkout flow', order: 1 },
-      { id: 'img-7', url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80', altText: 'Microservices telemetry and operational metrics', order: 2 },
+      { id: 'img-6', url: '/images/projects/ecommerce/ecommerce-storefront.svg', altText: 'E-commerce storefront and live checkout flow', order: 1 },
+      { id: 'img-7', url: '/images/projects/ecommerce/ecommerce-architecture-diagram.svg', altText: 'Microservices telemetry and operational metrics', order: 2 },
     ]
   },
   {

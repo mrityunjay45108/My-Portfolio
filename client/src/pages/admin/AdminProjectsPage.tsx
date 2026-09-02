@@ -310,6 +310,10 @@ export const AdminProjectsPage: React.FC = () => {
                                 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=150&q=80'
                               }
                               alt={proj.title}
+                              onError={(e) => {
+                                e.currentTarget.onerror = null;
+                                e.currentTarget.src = 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=150&q=80';
+                              }}
                               className="w-full h-full object-cover"
                             />
                           </div>

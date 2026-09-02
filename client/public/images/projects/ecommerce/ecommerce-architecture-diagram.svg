@@ -1,0 +1,313 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 820" width="100%" height="100%" style="background:#070b13; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgEcom" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1329" />
+      <stop offset="50%" stop-color="#070b13" />
+      <stop offset="100%" stop-color="#091122" />
+    </linearGradient>
+
+    <!-- Card Background -->
+    <linearGradient id="cardGradEcom" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111827" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#0c1220" stop-opacity="0.95" />
+    </linearGradient>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowCyanEcom" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 L3,4 Z" fill="#06b6d4" />
+    </marker>
+    <marker id="arrowPurpleEcom" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 L3,4 Z" fill="#a855f7" />
+    </marker>
+    <marker id="arrowEmeraldEcom" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 L3,4 Z" fill="#10b981" />
+    </marker>
+  </defs>
+
+  <!-- Tech Grid Background -->
+  <rect width="1400" height="820" fill="url(#bgEcom)" />
+  <g opacity="0.04" stroke="#ffffff" stroke-width="1">
+    <pattern id="gridEcom" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" />
+    </pattern>
+    <rect width="1400" height="820" fill="url(#gridEcom)" />
+  </g>
+
+  <!-- Ambient Glow Orbs -->
+  <circle cx="250" cy="180" r="160" fill="#06b6d4" opacity="0.06" />
+  <circle cx="700" cy="400" r="180" fill="#6366f1" opacity="0.06" />
+  <circle cx="1180" cy="560" r="160" fill="#10b981" opacity="0.05" />
+
+  <!-- HEADER BAR -->
+  <g transform="translate(60, 40)">
+    <rect width="1280" height="70" rx="16" fill="#0e1626" stroke="#1e293b" stroke-width="1.5" />
+    
+    <!-- Badge -->
+    <rect x="24" y="20" width="160" height="30" rx="8" fill="#06b6d4" fill-opacity="0.15" stroke="#06b6d4" stroke-opacity="0.4" />
+    <circle cx="38" cy="35" r="4" fill="#06b6d4" />
+    <text x="50" y="39" fill="#38bdf8" font-size="11" font-weight="700" letter-spacing="1">SYSTEM ARCHITECTURE</text>
+
+    <!-- Title -->
+    <text x="200" y="42" fill="#ffffff" font-size="18" font-weight="800" letter-spacing="0.3">
+      Scalable Event-Driven Microservices E-Commerce Architecture
+    </text>
+
+    <!-- Subtitle Meta Tags -->
+    <text x="960" y="42" fill="#94a3b8" font-size="12" font-family="monospace">
+      Latency: <tspan fill="#10b981" font-weight="bold">&lt;15ms</tspan> • Mesh: <tspan fill="#38bdf8">gRPC + RabbitMQ</tspan> • Caching: <tspan fill="#f59e0b">Redis</tspan>
+    </text>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- COLUMN 1: CLIENT & EDGE INGRESS (Left) -->
+  <!-- ========================================== -->
+  <g transform="translate(60, 140)">
+    <rect width="260" height="620" rx="20" fill="url(#cardGradEcom)" stroke="#06b6d4" stroke-opacity="0.4" stroke-width="1.5" />
+    
+    <rect x="16" y="16" width="228" height="42" rx="10" fill="#06b6d4" fill-opacity="0.12" />
+    <text x="28" y="42" fill="#38bdf8" font-size="13" font-weight="800" letter-spacing="0.5">1. CLIENT &amp; EDGE INGRESS</text>
+
+    <!-- Box 1: Storefront Web & Mobile -->
+    <g transform="translate(18, 75)">
+      <rect width="224" height="155" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#06b6d4" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#38bdf8" font-size="15">🛍️</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Next.js 15 Storefront</text>
+      <text x="48" y="40" fill="#64748b" font-size="10" font-family="monospace">React • TypeScript</text>
+      <text x="14" y="66" fill="#94a3b8" font-size="11">• Instant Catalog Search &amp; Filter</text>
+      <text x="14" y="86" fill="#94a3b8" font-size="11">• Optimistic Cart Management</text>
+      <text x="14" y="106" fill="#94a3b8" font-size="11">• Stripe One-Click Checkout</text>
+      <text x="14" y="126" fill="#94a3b8" font-size="11">• Real-Time Order Telemetry</text>
+      <text x="14" y="144" fill="#10b981" font-size="10" font-family="monospace">✓ 99+ Lighthouse Perf Score</text>
+    </g>
+
+    <!-- Box 2: Admin Operations Dashboard -->
+    <g transform="translate(18, 245)">
+      <rect width="224" height="155" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#a855f7" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#c084fc" font-size="15">📊</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Admin Operations Hub</text>
+      <text x="48" y="40" fill="#64748b" font-size="10" font-family="monospace">Inventory &amp; Sales Cockpit</text>
+      <text x="14" y="66" fill="#94a3b8" font-size="11">• Real-Time Revenue Telemetry</text>
+      <text x="14" y="86" fill="#94a3b8" font-size="11">• Inventory Threshold Alerts</text>
+      <text x="14" y="106" fill="#94a3b8" font-size="11">• Dynamic Pricing Rules Engine</text>
+      <text x="14" y="126" fill="#94a3b8" font-size="11">• Return &amp; Refund Orchestration</text>
+      <text x="14" y="144" fill="#38bdf8" font-size="10" font-family="monospace">&gt; Multi-Tenant Vendor Portal</text>
+    </g>
+
+    <!-- Box 3: Cloudflare Edge & CDN -->
+    <g transform="translate(18, 415)">
+      <rect width="224" height="180" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#f59e0b" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#fbbf24" font-size="15">🛡️</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Cloudflare Edge &amp; WAF</text>
+      <text x="48" y="40" fill="#64748b" font-size="10" font-family="monospace">DDoS &amp; Geo-Distributed CDN</text>
+      <text x="14" y="66" fill="#94a3b8" font-size="11">• SSL/TLS Termination</text>
+      <text x="14" y="86" fill="#94a3b8" font-size="11">• Edge Static Asset Caching</text>
+      <text x="14" y="106" fill="#94a3b8" font-size="11">• DDoS Shield &amp; Bot Defense</text>
+      <text x="14" y="126" fill="#94a3b8" font-size="11">• Intelligent Request Routing</text>
+      <text x="14" y="146" fill="#94a3b8" font-size="11">• Global Anycast Network</text>
+      <text x="14" y="166" fill="#10b981" font-size="10" font-family="monospace">✓ Zero Downtime Ingress</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- COLUMN 2: API GATEWAY & ORCHESTRATION (Middle-Left) -->
+  <!-- ========================================== -->
+  <g transform="translate(360, 140)">
+    <rect width="270" height="620" rx="20" fill="url(#cardGradEcom)" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1.5" />
+    
+    <rect x="16" y="16" width="238" height="42" rx="10" fill="#6366f1" fill-opacity="0.15" />
+    <text x="28" y="42" fill="#818cf8" font-size="13" font-weight="800" letter-spacing="0.5">2. KONG API GATEWAY &amp; SAGAS</text>
+
+    <!-- Box 1: Kong API Gateway -->
+    <g transform="translate(18, 75)">
+      <rect width="234" height="200" rx="12" fill="#131d31" stroke="#4f46e5" stroke-opacity="0.4" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#6366f1" fill-opacity="0.25" />
+      <text x="21" y="31" fill="#a5b4fc" font-size="15">⚡</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Kong API Gateway</text>
+      <text x="48" y="40" fill="#818cf8" font-size="10" font-family="monospace">Reverse Proxy &amp; Auth Hub</text>
+      
+      <rect x="12" y="55" width="210" height="24" rx="6" fill="#0f172a" />
+      <text x="18" y="71" fill="#38bdf8" font-size="10" font-family="monospace">JWT &amp; OAuth2 Token Guard</text>
+
+      <rect x="12" y="85" width="210" height="24" rx="6" fill="#0f172a" />
+      <text x="18" y="101" fill="#38bdf8" font-size="10" font-family="monospace">Dynamic Circuit Breakers</text>
+
+      <rect x="12" y="115" width="210" height="24" rx="6" fill="#0f172a" />
+      <text x="18" y="131" fill="#38bdf8" font-size="10" font-family="monospace">gRPC &amp; REST Multiplexer</text>
+
+      <rect x="12" y="145" width="210" height="24" rx="6" fill="#0f172a" />
+      <text x="18" y="161" fill="#38bdf8" font-size="10" font-family="monospace">Sliding Window Rate Limiter</text>
+
+      <text x="14" y="188" fill="#10b981" font-size="10" font-family="monospace">✓ Sub-3ms Proxy Overhead</text>
+    </g>
+
+    <!-- Box 2: Distributed Saga Coordinator -->
+    <g transform="translate(18, 290)">
+      <rect width="234" height="150" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#a855f7" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#c084fc" font-size="15">🔄</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Saga Orchestrator</text>
+      <text x="48" y="40" fill="#a855f7" font-size="10" font-family="monospace">Distributed Transactions</text>
+      <text x="14" y="66" fill="#cbd5e1" font-size="11">• 2-Phase Commit Coordinator</text>
+      <text x="14" y="86" fill="#cbd5e1" font-size="11">• Auto Compensating Actions</text>
+      <text x="14" y="106" fill="#cbd5e1" font-size="11">• Idempotency Key Validator</text>
+      <text x="14" y="126" fill="#cbd5e1" font-size="11">• Outbox Pattern Event Sync</text>
+      <text x="14" y="142" fill="#10b981" font-size="10" font-family="monospace">✓ Zero Payment Inconsistencies</text>
+    </g>
+
+    <!-- Box 3: OpenTelemetry & Health -->
+    <g transform="translate(18, 455)">
+      <rect width="234" height="140" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#10b981" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#34d399" font-size="15">📈</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Distributed Tracing</text>
+      <text x="48" y="40" fill="#64748b" font-size="10" font-family="monospace">Prometheus • Grafana</text>
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• Jaeger Distributed Tracing</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• End-to-End Latency Profiles</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• AlertManager Webhook Alerts</text>
+      <text x="14" y="128" fill="#10b981" font-size="10" font-family="monospace">✓ 99.99% Target Uptime</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- COLUMN 3: DECOUPLED MICROSERVICES (Middle-Right) -->
+  <!-- ========================================== -->
+  <g transform="translate(670, 140)">
+    <rect width="320" height="620" rx="20" fill="url(#cardGradEcom)" stroke="#a855f7" stroke-opacity="0.4" stroke-width="1.5" />
+    
+    <rect x="16" y="16" width="288" height="42" rx="10" fill="#a855f7" fill-opacity="0.15" />
+    <text x="28" y="42" fill="#c084fc" font-size="13" font-weight="800" letter-spacing="0.5">3. EVENT-DRIVEN MICROSERVICES</text>
+
+    <!-- Microservice Grid (4 Services) -->
+    <!-- Service 1: Product Catalog Service -->
+    <g transform="translate(18, 75)">
+      <rect width="284" height="115" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="26" height="26" rx="6" fill="#06b6d4" fill-opacity="0.2" />
+      <text x="18" y="30" fill="#38bdf8" font-size="14">📦</text>
+      <text x="46" y="24" fill="#ffffff" font-size="12" font-weight="700">Catalog &amp; Search Service</text>
+      <text x="46" y="38" fill="#38bdf8" font-size="10" font-family="monospace">Node.js • Redis • PostgreSQL</text>
+      <text x="14" y="62" fill="#cbd5e1" font-size="11">• Multi-Level Cache Invalidation</text>
+      <text x="14" y="80" fill="#cbd5e1" font-size="11">• Faceted Filters &amp; Full-Text Search</text>
+      <text x="14" y="98" fill="#10b981" font-size="10" font-family="monospace">✓ Response Time: &lt;8ms (Redis Hit)</text>
+    </g>
+
+    <!-- Service 2: Order & Cart Service -->
+    <g transform="translate(18, 205)">
+      <rect width="284" height="115" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="26" height="26" rx="6" fill="#6366f1" fill-opacity="0.2" />
+      <text x="18" y="30" fill="#818cf8" font-size="14">🛒</text>
+      <text x="46" y="24" fill="#ffffff" font-size="12" font-weight="700">Order &amp; Cart Service</text>
+      <text x="46" y="38" fill="#818cf8" font-size="10" font-family="monospace">Express.js • PostgreSQL</text>
+      <text x="14" y="62" fill="#cbd5e1" font-size="11">• Atomic Stock Reservation</text>
+      <text x="14" y="80" fill="#cbd5e1" font-size="11">• Event-Driven State Machine</text>
+      <text x="14" y="98" fill="#38bdf8" font-size="10" font-family="monospace">&gt; Publishes: OrderCreatedEvent</text>
+    </g>
+
+    <!-- Service 3: Payment & Stripe Service -->
+    <g transform="translate(18, 335)">
+      <rect width="284" height="115" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="26" height="26" rx="6" fill="#10b981" fill-opacity="0.2" />
+      <text x="18" y="30" fill="#34d399" font-size="14">💳</text>
+      <text x="46" y="24" fill="#ffffff" font-size="12" font-weight="700">Payment &amp; Stripe Service</text>
+      <text x="46" y="38" fill="#34d399" font-size="10" font-family="monospace">Idempotent Webhooks Engine</text>
+      <text x="14" y="62" fill="#cbd5e1" font-size="11">• Stripe Payment Intents API</text>
+      <text x="14" y="80" fill="#cbd5e1" font-size="11">• Automatic Reconciliation Pipeline</text>
+      <text x="14" y="98" fill="#10b981" font-size="10" font-family="monospace">✓ PCI-DSS Compliant Workflows</text>
+    </g>
+
+    <!-- Service 4: Notification & Delivery Service -->
+    <g transform="translate(18, 465)">
+      <rect width="284" height="130" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="26" height="26" rx="6" fill="#f59e0b" fill-opacity="0.2" />
+      <text x="18" y="30" fill="#fbbf24" font-size="14">📬</text>
+      <text x="46" y="24" fill="#ffffff" font-size="12" font-weight="700">Notification &amp; Logistics</text>
+      <text x="46" y="38" fill="#fbbf24" font-size="10" font-family="monospace">RabbitMQ Consumer Queue</text>
+      <text x="14" y="62" fill="#cbd5e1" font-size="11">• Resend Email &amp; SMS Dispatch</text>
+      <text x="14" y="80" fill="#cbd5e1" font-size="11">• Courier API Tracking Webhooks</text>
+      <text x="14" y="98" fill="#cbd5e1" font-size="11">• Push Notification SSE Stream</text>
+      <text x="14" y="116" fill="#10b981" font-size="10" font-family="monospace">✓ Zero Dropped Messages</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- COLUMN 4: DATA MESH & EVENT BUS (Right) -->
+  <!-- ========================================== -->
+  <g transform="translate(1030, 140)">
+    <rect width="310" height="620" rx="20" fill="url(#cardGradEcom)" stroke="#10b981" stroke-opacity="0.4" stroke-width="1.5" />
+    
+    <rect x="16" y="16" width="278" height="42" rx="10" fill="#10b981" fill-opacity="0.12" />
+    <text x="28" y="42" fill="#34d399" font-size="13" font-weight="800" letter-spacing="0.5">4. DATA MESH &amp; EVENT BUS</text>
+
+    <!-- Box 1: RabbitMQ Event Broker -->
+    <g transform="translate(18, 75)">
+      <rect width="274" height="165" rx="12" fill="#131d31" stroke="#f59e0b" stroke-opacity="0.4" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#f59e0b" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#fbbf24" font-size="15">🐰</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">RabbitMQ / Kafka Bus</text>
+      <text x="48" y="40" fill="#fbbf24" font-size="10" font-family="monospace">Topic Exchange Broker</text>
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• Asynchronous Event Pub/Sub</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• Dead Letter Exchange (DLX)</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• High-Throughput Message Buffer</text>
+      <text x="14" y="128" fill="#cbd5e1" font-size="11">• Guaranteed At-Least-Once Delivery</text>
+      <text x="14" y="148" fill="#10b981" font-size="10" font-family="monospace">✓ 50,000+ msg/sec Capacity</text>
+    </g>
+
+    <!-- Box 2: Sharded PostgreSQL Databases -->
+    <g transform="translate(18, 260)">
+      <rect width="274" height="175" rx="12" fill="#131d31" stroke="#10b981" stroke-opacity="0.3" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#10b981" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#34d399" font-size="15">🗄️</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">PostgreSQL Relational DBs</text>
+      <text x="48" y="40" fill="#34d399" font-size="10" font-family="monospace">Database-per-Service Pattern</text>
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• Isolated Catalog DB, Orders DB</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• Users &amp; Auth DB (Prisma ORM)</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• Read Replicas &amp; Connection Pooling</text>
+      <text x="14" y="128" fill="#cbd5e1" font-size="11">• Foreign Keys &amp; Index on Search Cols</text>
+      <text x="14" y="152" fill="#38bdf8" font-size="10" font-family="monospace">&gt; ACID Compliance &amp; PGBouncer</text>
+    </g>
+
+    <!-- Box 3: Redis Distributed Cache -->
+    <g transform="translate(18, 455)">
+      <rect width="274" height="140" rx="12" fill="#131d31" stroke="#334155" stroke-width="1" />
+      <rect x="12" y="12" width="28" height="28" rx="6" fill="#ef4444" fill-opacity="0.2" />
+      <text x="21" y="31" fill="#f87171" font-size="15">⚡</text>
+      <text x="48" y="26" fill="#ffffff" font-size="13" font-weight="700">Redis Cluster Tier</text>
+      <text x="48" y="40" fill="#f87171" font-size="10" font-family="monospace">In-Memory Store &amp; Locks</text>
+      <text x="14" y="68" fill="#cbd5e1" font-size="11">• Redlock Distributed Mutex</text>
+      <text x="14" y="88" fill="#cbd5e1" font-size="11">• High-Speed Product Query Cache</text>
+      <text x="14" y="108" fill="#cbd5e1" font-size="11">• Ephemeral Shopping Cart State</text>
+      <text x="14" y="126" fill="#10b981" font-size="10" font-family="monospace">✓ Cache Latency: &lt;2ms</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- CONNECTION ARROWS & DATA FLOW LINES -->
+  <!-- ========================================== -->
+  <path d="M320, 200 L360, 200" fill="none" stroke="#06b6d4" stroke-width="2.5" marker-end="url(#arrowCyanEcom)" />
+  <rect x="305" y="180" width="70" height="20" rx="6" fill="#0f172a" stroke="#06b6d4" stroke-width="0.8" />
+  <text x="312" y="194" fill="#38bdf8" font-size="9" font-family="monospace">1. HTTP / REST</text>
+
+  <path d="M630, 200 L670, 200" fill="none" stroke="#818cf8" stroke-width="2.5" marker-end="url(#arrowPurpleEcom)" />
+  <rect x="615" y="180" width="70" height="20" rx="6" fill="#0f172a" stroke="#818cf8" stroke-width="0.8" />
+  <text x="620" y="194" fill="#a5b4fc" font-size="9" font-family="monospace">2. gRPC Mesh</text>
+
+  <path d="M990, 260 L1030, 200" fill="none" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrowPurpleEcom)" />
+  <rect x="975" y="210" width="70" height="20" rx="6" fill="#0f172a" stroke="#f59e0b" stroke-width="0.8" />
+  <text x="980" y="224" fill="#fbbf24" font-size="9" font-family="monospace">3. RabbitMQ</text>
+
+  <path d="M990, 390 L1030, 350" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="3,3" marker-end="url(#arrowEmeraldEcom)" />
+  <text x="985" y="380" fill="#34d399" font-size="9" font-family="monospace">4. SQL Pool</text>
+
+  <!-- FOOTER LEGEND BAR -->
+  <g transform="translate(60, 775)">
+    <rect width="1280" height="30" rx="8" fill="#0b111e" />
+    <text x="20" y="20" fill="#64748b" font-size="11" font-family="monospace">
+      Engineered by Mrityunjay Kumar • Tech Stack: Node.js • Express • PostgreSQL • Redis • RabbitMQ • Docker • Kubernetes • Stripe
+    </text>
+    <circle cx="1220" cy="15" r="4" fill="#10b981" />
+    <text x="1232" y="19" fill="#10b981" font-size="11" font-weight="bold">p99 &lt; 15ms</text>
+  </g>
+</svg>
