@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Lock, Mail, ArrowRight, ShieldCheck, ArrowLeft } from 'lucide-react';
+import { Lock, Mail, ArrowRight, ShieldCheck, ArrowLeft, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
 
 export const AdminLoginPage: React.FC = () => {
-  const [email, setEmail] = useState('admin@mrityunjay.dev');
-  const [password, setPassword] = useState('AdminSecurePassword123!');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const { success, error: toastError } = useToast();
@@ -16,10 +17,15 @@ export const AdminLoginPage: React.FC = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!email.trim() || !password) {
+      toastError('Please enter your email and password');
+      return;
+    }
+
     setLoading(true);
     try {
-      await login(email, password);
-      success('Welcome back to the Admin CMS!');
+      await login(email.trim(), password);
+      success('Welcome back to the Admin Console!');
       navigate('/admin');
     } catch (err: any) {
       toastError(err.message || 'Login failed. Please verify your credentials.');
@@ -43,57 +49,65 @@ export const AdminLoginPage: React.FC = () => {
         </Link>
 
         {/* Card */}
-        <div className="bg-dark-900/80 border border-slate-800 rounded-3xl p-8 shadow-2xl backdrop-blur-xl space-y-6">
+        <div className="bg-dark-900/90 border border-slate-800 rounded-3xl p-8 shadow-2xl backdrop-blur-xl space-y-6">
           <div className="text-center space-y-2">
             <div className="w-12 h-12 rounded-2xl bg-brand-500/10 border border-brand-500/20 text-brand-400 flex items-center justify-center mx-auto mb-3">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <h1 className="text-2xl font-bold text-white tracking-tight">Admin Console</h1>
             <p className="text-xs sm:text-sm text-slate-400">
-              Authenticate to manage projects, blogs, case studies, and messages.
+              Enter your credentials to access the management cockpit.
             </p>
           </div>
 
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleLogin} className="space-y-4" autoComplete="off">
             <Input
               label="Admin Email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@mrityunjay.dev"
+              placeholder="name@domain.com"
               leftIcon={<Mail className="w-4 h-4 text-slate-500" />}
+              autoComplete="off"
               required
             />
 
-            <Input
-              label="Password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••••••"
-              leftIcon={<Lock className="w-4 h-4 text-slate-500" />}
-              required
-            />
+            <div className="relative">
+              <Input
+                label="Password"
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your master password"
+                leftIcon={<Lock className="w-4 h-4 text-slate-500" />}
+                autoComplete="new-password"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-[34px] text-slate-500 hover:text-slate-300 transition-colors cursor-pointer"
+                title={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
+            </div>
 
             <Button
               type="submit"
               variant="primary"
               size="lg"
-              className="w-full"
+              className="w-full mt-2"
               isLoading={loading}
               rightIcon={<ArrowRight className="w-4 h-4" />}
             >
               Sign In to CMS
             </Button>
           </form>
-
-          <div className="bg-dark-950/60 border border-slate-800/80 rounded-2xl p-3 text-center">
-            <p className="text-[11px] text-slate-400">
-              Default seed login: <code className="text-brand-300">admin@mrityunjay.dev</code>
-            </p>
-          </div>
         </div>
       </div>
     </div>
   );
 };
+
+export default AdminLoginPage;
