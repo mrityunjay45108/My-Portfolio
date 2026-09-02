@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ToastProvider } from './context/ToastContext';
+import { EducationProvider } from './context/EducationContext';
 
 // Public Pages
 import { HomePage } from './pages/HomePage';
@@ -18,6 +19,7 @@ import { AdminLoginPage } from './pages/admin/AdminLoginPage';
 import { AdminDashboardPage } from './pages/admin/AdminDashboardPage';
 import { AdminProjectsPage } from './pages/admin/AdminProjectsPage';
 import { AdminProjectFormPage } from './pages/admin/AdminProjectFormPage';
+import { AdminEducationPage } from './pages/admin/AdminEducationPage';
 import { AdminGitHubPage } from './pages/admin/AdminGitHubPage';
 import { AdminBlogPage } from './pages/admin/AdminBlogPage';
 import { AdminBlogFormPage } from './pages/admin/AdminBlogFormPage';
@@ -70,137 +72,147 @@ export const App: React.FC = () => {
     <BrowserRouter>
       <AuthProvider>
         <ToastProvider>
-          <ScrollToTop />
-          <Routes>
-            {/* Public Portfolio & Content Routes */}
-            <Route path="/" element={<HomePage />} />
-            <Route path="/projects/:slug" element={<ProjectDetailsPage />} />
-            <Route path="/github" element={<GitHubPage />} />
-            <Route path="/blog" element={<BlogListPage />} />
-            <Route path="/blog/:slug" element={<BlogDetailPage />} />
-            <Route path="/case-studies" element={<CaseStudiesListPage />} />
-            <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
+          <EducationProvider>
+            <ScrollToTop />
+            <Routes>
+              {/* Public Portfolio & Content Routes */}
+              <Route path="/" element={<HomePage />} />
+              <Route path="/projects/:slug" element={<ProjectDetailsPage />} />
+              <Route path="/github" element={<GitHubPage />} />
+              <Route path="/blog" element={<BlogListPage />} />
+              <Route path="/blog/:slug" element={<BlogDetailPage />} />
+              <Route path="/case-studies" element={<CaseStudiesListPage />} />
+              <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
 
-            {/* Admin Authentication */}
-            <Route path="/admin/login" element={<AdminLoginPage />} />
+              {/* Admin Authentication */}
+              <Route path="/admin/login" element={<AdminLoginPage />} />
 
-            {/* Protected Admin CMS Routes */}
-            <Route
-              path="/admin"
-              element={
-                <ProtectedRoute>
-                  <AdminDashboardPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/projects"
-              element={
-                <ProtectedRoute>
-                  <AdminProjectsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/projects/new"
-              element={
-                <ProtectedRoute>
-                  <AdminProjectFormPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/projects/:id/edit"
-              element={
-                <ProtectedRoute>
-                  <AdminProjectFormPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/github"
-              element={
-                <ProtectedRoute>
-                  <AdminGitHubPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/blog"
-              element={
-                <ProtectedRoute>
-                  <AdminBlogPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/blog/new"
-              element={
-                <ProtectedRoute>
-                  <AdminBlogFormPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/blog/:id/edit"
-              element={
-                <ProtectedRoute>
-                  <AdminBlogFormPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/case-studies"
-              element={
-                <ProtectedRoute>
-                  <AdminCaseStudiesPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/case-studies/new"
-              element={
-                <ProtectedRoute>
-                  <AdminCaseStudyFormPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/case-studies/:id/edit"
-              element={
-                <ProtectedRoute>
-                  <AdminCaseStudyFormPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/technologies"
-              element={
-                <ProtectedRoute>
-                  <AdminTechnologiesPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/messages"
-              element={
-                <ProtectedRoute>
-                  <AdminMessagesPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/analytics"
-              element={
-                <ProtectedRoute>
-                  <AdminAnalyticsPage />
-                </ProtectedRoute>
-              }
-            />
+              {/* Protected Admin CMS Routes */}
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute>
+                    <AdminDashboardPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/projects"
+                element={
+                  <ProtectedRoute>
+                    <AdminProjectsPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/projects/new"
+                element={
+                  <ProtectedRoute>
+                    <AdminProjectFormPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/projects/:id/edit"
+                element={
+                  <ProtectedRoute>
+                    <AdminProjectFormPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/education"
+                element={
+                  <ProtectedRoute>
+                    <AdminEducationPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/github"
+                element={
+                  <ProtectedRoute>
+                    <AdminGitHubPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/blog"
+                element={
+                  <ProtectedRoute>
+                    <AdminBlogPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/blog/new"
+                element={
+                  <ProtectedRoute>
+                    <AdminBlogFormPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/blog/:id/edit"
+                element={
+                  <ProtectedRoute>
+                    <AdminBlogFormPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/case-studies"
+                element={
+                  <ProtectedRoute>
+                    <AdminCaseStudiesPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/case-studies/new"
+                element={
+                  <ProtectedRoute>
+                    <AdminCaseStudyFormPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/case-studies/:id/edit"
+                element={
+                  <ProtectedRoute>
+                    <AdminCaseStudyFormPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/technologies"
+                element={
+                  <ProtectedRoute>
+                    <AdminTechnologiesPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/messages"
+                element={
+                  <ProtectedRoute>
+                    <AdminMessagesPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/analytics"
+                element={
+                  <ProtectedRoute>
+                    <AdminAnalyticsPage />
+                  </ProtectedRoute>
+                }
+              />
 
-            {/* 404 Fallback */}
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+              {/* 404 Fallback */}
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </EducationProvider>
         </ToastProvider>
       </AuthProvider>
     </BrowserRouter>

@@ -1,8 +1,10 @@
 import React from 'react';
-import { GraduationCap, Award, Calendar, MapPin, BookOpen } from 'lucide-react';
-import { educations } from '../../data/education';
+import { GraduationCap, Calendar, MapPin, Award } from 'lucide-react';
+import { useEducation } from '../../context/EducationContext';
 
 export const EducationSection: React.FC = () => {
+  const { educations } = useEducation();
+
   return (
     <section id="education" className="py-20 lg:py-28 relative bg-dark-950/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,6 +47,12 @@ export const EducationSection: React.FC = () => {
                   {edu.university && (
                     <p className="text-xs text-slate-400 font-mono mt-0.5">{edu.university}</p>
                   )}
+                  {edu.grade && (
+                    <p className="text-xs text-emerald-400 font-mono mt-1 flex items-center gap-1">
+                      <Award className="w-3.5 h-3.5" />
+                      <span>{edu.grade}</span>
+                    </p>
+                  )}
                   <div className="flex items-center gap-1 text-xs text-slate-500 font-mono mt-2">
                     <MapPin className="w-3.5 h-3.5" />
                     <span>{edu.location}</span>
@@ -52,19 +60,21 @@ export const EducationSection: React.FC = () => {
                 </div>
 
                 {/* Highlights */}
-                <div className="pt-4 border-t border-slate-800/80 space-y-2">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 font-mono">
-                    Highlights & Coursework:
-                  </p>
-                  <ul className="space-y-1.5 text-xs text-slate-300 leading-relaxed">
-                    {edu.highlights.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <span className="text-brand-400 font-bold">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {edu.highlights && edu.highlights.length > 0 && (
+                  <div className="pt-4 border-t border-slate-800/80 space-y-2">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 font-mono">
+                      Highlights & Coursework:
+                    </p>
+                    <ul className="space-y-1.5 text-xs text-slate-300 leading-relaxed">
+                      {edu.highlights.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <span className="text-brand-400 font-bold">•</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </div>
           ))}
