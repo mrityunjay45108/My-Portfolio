@@ -435,19 +435,33 @@ class ApiClient {
 
   // CONTACT
   contact = {
-    sendMessage: async (data: { name: string; email: string; subject?: string; message: string }) => {
-      return this.request<{ id: string; createdAt: string }>('/contact', {
+    sendMessage: async (data: {
+      name: string;
+      email: string;
+      subject?: string;
+      message: string;
+      company?: string;
+      purpose?: string;
+      sessionId?: string;
+    }): Promise<{ success: boolean; message: string }> => {
+      return this.request<{ success: boolean; message: string }>('/contact', {
         method: 'POST',
         body: JSON.stringify(data),
       });
     },
-    getMessages: async (): Promise<ContactMessage[]> => {
-      return this.request<ContactMessage[]>('/contact');
+    getMessages: async (params?: { status?: string; search?: string; page?: number; limit?: number }) => {
+      const query = new URLSearchParams();
+      if (params?.status) query.set('status', params.status);
+      if (params?.search) query.set('search', params.search);
+      if (params?.page) query.set('page', String(params.page));
+      if (params?.limit) query.set('limit', String(params.limit));
+      const qs = query.toString();
+      return this.request<any>(`/contact${qs ? `?${qs}` : ''}`);
     },
-    markAsRead: async (id: string, isRead = true): Promise<ContactMessage> => {
-      return this.request<ContactMessage>(`/contact/${id}/read`, {
+    updateStatus: async (id: string, status: 'NEW' | 'READ' | 'REPLIED' | 'ARCHIVED') => {
+      return this.request<any>(`/contact/${id}`, {
         method: 'PATCH',
-        body: JSON.stringify({ isRead }),
+        body: JSON.stringify({ status }),
       });
     },
     deleteMessage: async (id: string): Promise<void> => {
@@ -457,20 +471,43 @@ class ApiClient {
     },
   };
 
-  // ANALYTICS
+  // ANALYTICS & RECRUITER CONVERSION
   analytics = {
-    track: async (data: { path: string; type?: string; resourceId?: string; referrer?: string }) => {
+    recordEvent: async (data: any) => {
       try {
-        return await this.request('/analytics/track', {
+        return await this.request('/analytics/events', {
           method: 'POST',
           body: JSON.stringify(data),
         });
       } catch {
-        // Analytics failures shouldn't throw to users
+        // Silent fail
       }
     },
-    getStats: async () => {
-      return this.request<any>('/analytics/stats');
+    track: async (data: { path?: string; type?: string; resourceId?: string; referrer?: string }) => {
+      return this.analytics.recordEvent({
+        eventType: data.type || 'PAGE_VIEW',
+        page: data.path,
+        resourceId: data.resourceId,
+        referrer: data.referrer,
+      });
+    },
+    getStats: async (timeRange = '30d') => {
+      return this.analytics.getOverview(timeRange);
+    },
+    getOverview: async (timeRange = '30d') => {
+      return this.request<any>(`/analytics/overview?timeRange=${timeRange}`);
+    },
+    getProjects: async (timeRange = '30d') => {
+      return this.request<any>(`/analytics/projects?timeRange=${timeRange}`);
+    },
+    getFunnel: async (timeRange = '30d') => {
+      return this.request<any>(`/analytics/funnel?timeRange=${timeRange}`);
+    },
+    getSources: async (timeRange = '30d') => {
+      return this.request<any>(`/analytics/sources?timeRange=${timeRange}`);
+    },
+    getExportUrl: (timeRange = 'all') => {
+      return `${API_BASE}/analytics/export?timeRange=${timeRange}`;
     },
   };
 

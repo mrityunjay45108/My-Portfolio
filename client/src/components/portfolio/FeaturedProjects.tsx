@@ -5,6 +5,7 @@ import { Project } from '../../types';
 import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
 import { GithubIcon } from '../ui/Icons';
+import { trackProjectGithubClick, trackProjectLiveDemoClick } from '../../services/analytics';
 
 export interface FeaturedProjectsProps {
   projects: Project[];
@@ -126,7 +127,12 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) 
                     </Link>
 
                     {project.liveUrl && (
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => trackProjectLiveDemoClick(project.slug)}
+                      >
                         <Button
                           variant="secondary"
                           size="md"
@@ -138,7 +144,12 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) 
                     )}
 
                     {project.githubUrl && (
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => trackProjectGithubClick(project.slug)}
+                      >
                         <Button
                           variant="outline"
                           size="md"

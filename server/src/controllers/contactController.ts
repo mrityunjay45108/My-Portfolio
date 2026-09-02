@@ -1,60 +1,74 @@
-import { Request, Response, NextFunction } from 'express';
-import { ContactService } from '../services/contactService.js';
+import { Request, Response } from 'express';
+import { contactService } from '../services/contactService.js';
 
-export class ContactController {
-  static async sendMessage(req: Request, res: Response, next: NextFunction) {
+export const contactController = {
+  /**
+   * Public contact submission
+   */
+  async submitContact(req: Request, res: Response) {
     try {
-      const message = await ContactService.createMessage(req.body);
-      res.status(201).json({
-        success: true,
-        message: 'Your message has been sent successfully. Mrityunjay will get back to you soon!',
-        data: {
-          id: message.id,
-          createdAt: message.createdAt,
-        },
+      const { name, email, subject, message, company, purpose, sessionId } = req.body;
+      const result = await contactService.createMessage({
+        name,
+        email,
+        subject,
+        message,
+        company,
+        purpose,
+        sessionId,
       });
-    } catch (error) {
-      next(error);
-    }
-  }
 
-  static async getMessages(_req: Request, res: Response, next: NextFunction) {
-    try {
-      const messages = await ContactService.getAllMessages();
-      res.status(200).json({
+      return res.status(201).json({
         success: true,
-        data: messages,
+        message: 'Thank you! Your message has been sent successfully. Mrityunjay will get back to you shortly.',
+        data: { id: result.id },
       });
-    } catch (error) {
-      next(error);
+    } catch (error: any) {
+      return res.status(400).json({ success: false, message: error.message });
     }
-  }
+  },
 
-  static async markAsRead(req: Request, res: Response, next: NextFunction) {
+  /**
+   * Admin: Get messages with search & status filters
+   */
+  async getMessages(req: Request, res: Response) {
     try {
-      const id = (Array.isArray(req.params.id) ? req.params.id[0] : req.params.id) as string;
-      const { isRead } = req.body;
-      const message = await ContactService.markAsRead(id, isRead !== undefined ? isRead : true);
-      res.status(200).json({
-        success: true,
-        message: 'Message status updated',
-        data: message,
-      });
-    } catch (error) {
-      next(error);
-    }
-  }
+      const status = req.query.status as string;
+      const search = req.query.search as string;
+      const page = parseInt(req.query.page as string) || 1;
+      const limit = parseInt(req.query.limit as string) || 50;
 
-  static async deleteMessage(req: Request, res: Response, next: NextFunction) {
-    try {
-      const id = (Array.isArray(req.params.id) ? req.params.id[0] : req.params.id) as string;
-      await ContactService.deleteMessage(id);
-      res.status(200).json({
-        success: true,
-        message: 'Message deleted successfully',
-      });
-    } catch (error) {
-      next(error);
+      const data = await contactService.getMessages({ status, search, page, limit });
+      return res.json({ success: true, data });
+    } catch (error: any) {
+      return res.status(500).json({ success: false, message: error.message });
     }
-  }
-}
+  },
+
+  /**
+   * Admin: Update status
+   */
+  async updateStatus(req: Request, res: Response) {
+    try {
+      const id = String(req.params.id);
+      const { status } = req.body;
+      const updated = await contactService.updateStatus(id, status);
+      return res.json({ success: true, data: updated });
+    } catch (error: any) {
+      return res.status(400).json({ success: false, message: error.message });
+    }
+  },
+
+  /**
+   * Admin: Delete message
+   */
+  async deleteMessage(req: Request, res: Response) {
+    try {
+      const id = String(req.params.id);
+      await contactService.deleteMessage(id);
+      return res.json({ success: true, message: 'Message deleted successfully' });
+    } catch (error: any) {
+      return res.status(400).json({ success: false, message: error.message });
+    }
+  },
+};

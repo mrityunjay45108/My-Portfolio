@@ -21,6 +21,7 @@ import { VideoPlayer } from '../components/ui/VideoPlayer';
 import { Lightbox } from '../components/portfolio/Lightbox';
 import { useToast } from '../context/ToastContext';
 import { GithubIcon } from '../components/ui/Icons';
+import { trackProjectGithubClick, trackProjectLiveDemoClick } from '../services/analytics';
 
 export const ProjectDetailsPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -142,14 +143,24 @@ export const ProjectDetailsPage: React.FC = () => {
             {/* CTAs */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               {project.liveUrl && (
-                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackProjectLiveDemoClick(project.slug)}
+                >
                   <Button variant="primary" size="lg" leftIcon={<ExternalLink className="w-4 h-4" />}>
                     Live Demo
                   </Button>
                 </a>
               )}
               {project.githubUrl && (
-                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackProjectGithubClick(project.slug)}
+                >
                   <Button variant="outline" size="lg" leftIcon={<GithubIcon size={16} />}>
                     Source Code
                   </Button>

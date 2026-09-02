@@ -3,6 +3,7 @@ import { ArrowDown, FileText, Send, Mail, Terminal } from 'lucide-react';
 import { personalInfo } from '../../data/personal';
 import { Button } from '../ui/Button';
 import { GithubIcon, LinkedinIcon } from '../ui/Icons';
+import { trackResumeDownload, trackSocialClick } from '../../services/analytics';
 
 export const HeroSection: React.FC = () => {
   const scrollTo = (id: string) => {
@@ -64,6 +65,7 @@ export const HeroSection: React.FC = () => {
                 href={personalInfo.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackResumeDownload('hero_cta')}
               >
                 <Button
                   variant="secondary"
@@ -91,6 +93,7 @@ export const HeroSection: React.FC = () => {
                 href={personalInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackSocialClick('github')}
                 className="flex items-center gap-1.5 hover:text-white transition-colors"
               >
                 <GithubIcon size={16} />
@@ -100,6 +103,7 @@ export const HeroSection: React.FC = () => {
                 href={personalInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackSocialClick('linkedin')}
                 className="flex items-center gap-1.5 hover:text-white transition-colors"
               >
                 <LinkedinIcon size={16} className="text-blue-400" />

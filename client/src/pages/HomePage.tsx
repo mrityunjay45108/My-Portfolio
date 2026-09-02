@@ -6,6 +6,7 @@ import { AboutSection } from '../components/portfolio/AboutSection';
 import { SkillsSection } from '../components/portfolio/SkillsSection';
 import { FeaturedProjects } from '../components/portfolio/FeaturedProjects';
 import { ProjectsGrid } from '../components/portfolio/ProjectsGrid';
+import { WhyWorkWithMeSection } from '../components/portfolio/WhyWorkWithMeSection';
 import { GitHubTeaserSection } from '../components/portfolio/GitHubTeaserSection';
 import { ExperienceSection } from '../components/portfolio/ExperienceSection';
 import { EducationSection } from '../components/portfolio/EducationSection';
@@ -14,6 +15,7 @@ import { ServicesSection } from '../components/portfolio/ServicesSection';
 import { ContactSection } from '../components/portfolio/ContactSection';
 import { Project } from '../types';
 import { api } from '../services/api';
+import { trackPageView } from '../services/analytics';
 
 export const HomePage: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -21,7 +23,7 @@ export const HomePage: React.FC = () => {
 
   useEffect(() => {
     // Record pageview
-    api.analytics.track({ path: '/', type: 'PAGE_VIEW' });
+    trackPageView('/');
 
     const fetchProjects = async () => {
       try {
@@ -49,6 +51,7 @@ export const HomePage: React.FC = () => {
         <SkillsSection />
         <FeaturedProjects projects={featuredProjects} />
         <ProjectsGrid projects={projects} />
+        <WhyWorkWithMeSection />
         <GitHubTeaserSection />
         <ExperienceSection />
         <EducationSection />

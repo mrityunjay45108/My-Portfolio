@@ -4,6 +4,7 @@ import { Menu, X, FileText, Lock } from 'lucide-react';
 import { personalInfo } from '../../data/personal';
 import { useAuth } from '../../context/AuthContext';
 import { GithubIcon, LinkedinIcon } from '../ui/Icons';
+import { trackResumeDownload, trackSocialClick } from '../../services/analytics';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -146,6 +147,7 @@ export const Navbar: React.FC = () => {
               href={personalInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackSocialClick('linkedin')}
               className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
               aria-label="LinkedIn Profile"
             >
@@ -156,6 +158,7 @@ export const Navbar: React.FC = () => {
               href={personalInfo.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackResumeDownload('navbar_desktop')}
               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-slate-600 rounded-xl transition-all shadow-xs"
             >
               <FileText className="w-3.5 h-3.5 text-brand-400" />
@@ -178,6 +181,7 @@ export const Navbar: React.FC = () => {
               href={personalInfo.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackResumeDownload('navbar_mobile')}
               className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium text-slate-200 bg-slate-800 border border-slate-700 rounded-lg"
             >
               <FileText className="w-3 h-3 text-brand-400" />

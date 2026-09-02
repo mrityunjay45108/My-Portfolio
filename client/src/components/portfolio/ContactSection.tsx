@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Mail, Send, Copy, Check, Sparkles, MessageSquare } from 'lucide-react';
+import { Mail, Send, Copy, Check, Sparkles, MessageSquare, Building2, Briefcase } from 'lucide-react';
 import { personalInfo } from '../../data/personal';
 import { api } from '../../services/api';
 import { useToast } from '../../context/ToastContext';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
 import { Textarea } from '../../components/ui/Textarea';
+import { Select } from '../../components/ui/Select';
 import { GithubIcon, LinkedinIcon } from '../ui/Icons';
+import { getSessionId, trackContactFormOpen } from '../../services/analytics';
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -14,10 +16,13 @@ export const ContactSection: React.FC = () => {
     email: '',
     subject: '',
     message: '',
+    company: '',
+    purpose: 'Job Opportunity',
   });
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [copied, setCopied] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const { success, error: toastError } = useToast();
 
   const handleCopyEmail = () => {
@@ -25,6 +30,13 @@ export const ContactSection: React.FC = () => {
     setCopied(true);
     success('Email address copied to clipboard!');
     setTimeout(() => setCopied(false), 3000);
+  };
+
+  const handleFormFocus = () => {
+    if (!hasInteracted) {
+      setHasInteracted(true);
+      trackContactFormOpen();
+    }
   };
 
   const validate = () => {
@@ -50,9 +62,20 @@ export const ContactSection: React.FC = () => {
 
     setLoading(true);
     try {
-      await api.contact.sendMessage(formData);
-      success('Thank you! Your message has been delivered to Mrityunjay.');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      const sessionId = getSessionId();
+      await api.contact.sendMessage({
+        ...formData,
+        sessionId,
+      });
+      success('Thank you! Your message has been sent directly to Mrityunjay.');
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+        company: '',
+        purpose: 'Job Opportunity',
+      });
       setErrors({});
     } catch (err: any) {
       toastError(err.message || 'Failed to send message. Please try emailing directly.');
@@ -70,30 +93,30 @@ export const ContactSection: React.FC = () => {
             Get In Touch
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Let's Discuss Projects, Engineering & Ideas
+            Let's Discuss Opportunities & Engineering
           </h2>
           <p className="text-slate-400 text-base sm:text-lg leading-relaxed">
-            Have an open role, project inquiry, or technical challenge? Send a message and I'll respond promptly.
+            Have an open role, technical project, or challenge? Send a message and I'll respond within 24 hours.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 max-w-5xl mx-auto items-start">
           {/* Left Info Column */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-dark-900/60 border border-slate-800/80 rounded-3xl p-6 sm:p-8 space-y-6">
+            <div className="bg-dark-900/60 border border-slate-800/80 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl">
               <h3 className="text-xl font-bold text-slate-100 flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-brand-400" />
                 <span>Direct Contact Details</span>
               </h3>
 
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                Feel free to email me directly or send a message via the form. I typically respond within 24 hours.
+                Available for full-time software engineering roles, technical contract projects, and high-impact AI/full-stack initiatives worldwide.
               </p>
 
               {/* Copy Email Box */}
               <div className="bg-dark-950/80 border border-slate-800 rounded-2xl p-4 flex items-center justify-between gap-3">
                 <div className="overflow-hidden">
-                  <p className="text-[11px] font-mono text-slate-500">Official Email</p>
+                  <p className="text-[11px] font-mono text-slate-500">Official Direct Email</p>
                   <p className="text-xs sm:text-sm font-semibold text-slate-200 truncate mt-0.5">
                     {personalInfo.email}
                   </p>
@@ -146,17 +169,17 @@ export const ContactSection: React.FC = () => {
 
           {/* Right Form Column */}
           <div className="lg:col-span-7">
-            <div className="bg-dark-900/60 border border-slate-800/80 rounded-3xl p-6 sm:p-8">
+            <div className="bg-dark-900/60 border border-slate-800/80 rounded-3xl p-6 sm:p-8 shadow-xl">
               <h3 className="text-xl font-bold text-slate-100 mb-6 flex items-center gap-2">
                 <MessageSquare className="w-5 h-5 text-cyan-400" />
                 <span>Send a Direct Message</span>
               </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} onFocus={handleFormFocus} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Input
                     label="Your Name"
-                    placeholder="Enter your name"
+                    placeholder="e.g. Sarah Jenkins"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     error={errors.name}
@@ -165,7 +188,7 @@ export const ContactSection: React.FC = () => {
                   <Input
                     label="Email Address"
                     type="email"
-                    placeholder="Enter your email"
+                    placeholder="e.g. sarah@company.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     error={errors.email}
@@ -173,17 +196,39 @@ export const ContactSection: React.FC = () => {
                   />
                 </div>
 
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <Input
+                    label="Company / Organization (Optional)"
+                    placeholder="e.g. Stripe, Acme Corp, Stealth AI"
+                    value={formData.company}
+                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  />
+
+                  <Select
+                    label="Inquiry Purpose"
+                    value={formData.purpose}
+                    onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
+                    options={[
+                      { value: 'Job Opportunity', label: '💼 Full-Time Job Opportunity' },
+                      { value: 'Freelance / Contract', label: '🚀 Freelance / Contract Project' },
+                      { value: 'Technical Collaboration', label: '🤝 Technical Collaboration' },
+                      { value: 'Startup / Advisory', label: '💡 Startup / Advisory' },
+                      { value: 'General Inquiry', label: '💬 General Inquiry' },
+                    ]}
+                  />
+                </div>
+
                 <Input
                   label="Subject (Optional)"
-                  placeholder="Full-Stack Opportunity / Project Proposal"
+                  placeholder="e.g. Full-Stack / AI Engineer Opportunity"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                 />
 
                 <Textarea
                   label="Your Message"
-                  rows={5}
-                  placeholder="Hi Mrityunjay, I'd like to discuss..."
+                  rows={4}
+                  placeholder="Hi Mrityunjay, we were impressed by your AI Copilot & Microservices work and would like to discuss..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   error={errors.message}
@@ -198,7 +243,7 @@ export const ContactSection: React.FC = () => {
                   isLoading={loading}
                   rightIcon={<Send className="w-4 h-4" />}
                 >
-                  Send Message
+                  Send Message to Mrityunjay
                 </Button>
               </form>
             </div>
