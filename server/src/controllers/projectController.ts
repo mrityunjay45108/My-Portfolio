@@ -95,7 +95,13 @@ export class ProjectController {
   static async deleteProject(req: Request, res: Response, next: NextFunction) {
     try {
       const id = (Array.isArray(req.params.id) ? req.params.id[0] : req.params.id) as string;
-      await ProjectService.deleteProject(id);
+      const result = await ProjectService.deleteProject(id);
+      if (!result) {
+        return res.status(200).json({
+          success: true,
+          message: 'Project removed or was not present in database',
+        });
+      }
       res.status(200).json({
         success: true,
         message: 'Project deleted successfully',

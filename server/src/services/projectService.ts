@@ -228,12 +228,27 @@ export class ProjectService {
     return this.getProjectBySlugOrId(id);
   }
 
-  static async deleteProject(id: string) {
-    await prisma.projectTechnology.deleteMany({ where: { projectId: id } });
-    await prisma.projectFeature.deleteMany({ where: { projectId: id } });
-    await prisma.projectImage.deleteMany({ where: { projectId: id } });
+  static async deleteProject(idOrSlug: string) {
+    const project = await prisma.project.findFirst({
+      where: {
+        OR: [{ id: idOrSlug }, { slug: idOrSlug }],
+      },
+    });
+
+    if (!project) {
+      return null;
+    }
+
+    await prisma.projectTechnology.deleteMany({ where: { projectId: project.id } });
+    await prisma.projectFeature.deleteMany({ where: { projectId: project.id } });
+    await prisma.projectImage.deleteMany({ where: { projectId: project.id } });
+    await prisma.gitHubRepository.updateMany({
+      where: { projectId: project.id },
+      data: { projectId: null },
+    });
+
     return prisma.project.delete({
-      where: { id },
+      where: { id: project.id },
     });
   }
 

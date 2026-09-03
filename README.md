@@ -129,8 +129,8 @@ PORT=5000
 NODE_ENV=development
 CLIENT_URL=http://localhost:5173
 
-# Supabase PostgreSQL Connection String
-DATABASE_URL="postgresql://postgres:Kumar%40456321123444@db.cmwruqnsfeehbamcekbp.supabase.co:5432/postgres"
+# Supabase PostgreSQL Connection String (Use Pooler for cloud/Render IPv4 compatibility)
+DATABASE_URL="postgresql://postgres.cmwruqnsfeehbamcekbp:Kumar%40456321123444@aws-0-ap-northeast-2.pooler.supabase.com:5432/postgres?sslmode=require"
 
 # Authentication
 JWT_SECRET="mrityunjay-super-secure-jwt-key-2026-production-min-32-chars-long"
