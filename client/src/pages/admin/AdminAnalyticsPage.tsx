@@ -40,10 +40,15 @@ export const AdminAnalyticsPage: React.FC = () => {
         api.analytics.getSources(range),
       ]);
 
-      if (overviewRes.data) setOverview(overviewRes.data);
-      if (projectsRes.data) setProjects(projectsRes.data);
-      if (funnelRes.data) setFunnel(funnelRes.data);
-      if (sourcesRes.data) setSources(sourcesRes.data);
+      const o = overviewRes?.data !== undefined ? overviewRes.data : overviewRes;
+      const p = projectsRes?.data !== undefined ? projectsRes.data : projectsRes;
+      const f = funnelRes?.data !== undefined ? funnelRes.data : funnelRes;
+      const s = sourcesRes?.data !== undefined ? sourcesRes.data : sourcesRes;
+
+      if (o) setOverview(o);
+      if (p) setProjects(p);
+      if (f) setFunnel(f);
+      if (s) setSources(s);
     } catch (err: any) {
       toastError(err.message || 'Error fetching analytics');
     } finally {

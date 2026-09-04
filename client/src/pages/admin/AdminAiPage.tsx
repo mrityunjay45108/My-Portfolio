@@ -43,14 +43,16 @@ export const AdminAiPage: React.FC = () => {
     setLoading(true);
     try {
       const res = await api.ai.getAdminStats();
-      if (res.data) {
-        setStats(res.data);
-        if (res.data.settings) {
+      const data = res?.settings || res?.conversations ? res : (res?.data || res);
+      if (data) {
+        setStats(data);
+        const settings = data.settings;
+        if (settings) {
           setSettingsForm({
-            enabled: res.data.settings.enabled ?? true,
-            provider: res.data.settings.provider || 'gemini',
-            model: res.data.settings.model || 'gemini-1.5-flash',
-            rateLimitPerMin: res.data.settings.rateLimitPerMin || 20,
+            enabled: settings.enabled ?? true,
+            provider: settings.provider || 'gemini',
+            model: settings.model || 'gemini-1.5-flash',
+            rateLimitPerMin: settings.rateLimitPerMin || 20,
           });
         }
       }

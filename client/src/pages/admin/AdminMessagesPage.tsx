@@ -40,10 +40,11 @@ export const AdminMessagesPage: React.FC = () => {
         status: statusFilter,
         search: searchQuery || undefined,
       });
-      if (res.data) {
-        setMessages(res.data.messages || []);
-        setTotal(res.data.total || 0);
-        setUnreadCount(res.data.unreadCount || 0);
+      const data = res?.messages ? res : (res?.data || res);
+      if (data && Array.isArray(data.messages)) {
+        setMessages(data.messages);
+        setTotal(data.total ?? data.messages.length);
+        setUnreadCount(data.unreadCount ?? data.messages.filter((m: any) => m.status === 'NEW').length);
       }
     } catch (err: any) {
       toastError(err.message || 'Error fetching messages');
