@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-route
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ToastProvider } from './context/ToastContext';
 import { EducationProvider } from './context/EducationContext';
+import { ResumeProvider } from './context/ResumeContext';
 import { AiChatWidget } from './components/ai/AiChatWidget';
 
 // Public Pages
@@ -18,6 +19,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 // Admin Pages
 import { AdminLoginPage } from './pages/admin/AdminLoginPage';
 import { AdminDashboardPage } from './pages/admin/AdminDashboardPage';
+import { AdminResumePage } from './pages/admin/AdminResumePage';
 import { AdminAiPage } from './pages/admin/AdminAiPage';
 import { AdminProjectsPage } from './pages/admin/AdminProjectsPage';
 import { AdminProjectFormPage } from './pages/admin/AdminProjectFormPage';
@@ -75,8 +77,9 @@ export const App: React.FC = () => {
       <AuthProvider>
         <ToastProvider>
           <EducationProvider>
-            <ScrollToTop />
-            <Routes>
+            <ResumeProvider>
+              <ScrollToTop />
+              <Routes>
               {/* Public Portfolio & Content Routes */}
               <Route path="/" element={<HomePage />} />
               <Route path="/projects/:slug" element={<ProjectDetailsPage />} />
@@ -95,6 +98,14 @@ export const App: React.FC = () => {
                 element={
                   <ProtectedRoute>
                     <AdminDashboardPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/resume"
+                element={
+                  <ProtectedRoute>
+                    <AdminResumePage />
                   </ProtectedRoute>
                 }
               />
@@ -225,6 +236,7 @@ export const App: React.FC = () => {
 
             {/* Global AI Portfolio Assistant Chat Widget */}
             <AiChatWidget />
+            </ResumeProvider>
           </EducationProvider>
         </ToastProvider>
       </AuthProvider>

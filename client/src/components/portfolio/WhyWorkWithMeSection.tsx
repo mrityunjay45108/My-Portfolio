@@ -13,10 +13,12 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { personalInfo } from '../../data/personal';
+import { useResume } from '../../context/ResumeContext';
 import { trackResumeDownload } from '../../services/analytics';
 import { Button } from '../ui/Button';
 
 export const WhyWorkWithMeSection: React.FC = () => {
+  const { resumeUrl } = useResume();
   const pillars = [
     {
       icon: Code2,
@@ -70,7 +72,7 @@ export const WhyWorkWithMeSection: React.FC = () => {
 
   const handleResumeClick = () => {
     trackResumeDownload('why_work_with_me_section');
-    window.open(personalInfo.resumeUrl, '_blank', 'noopener,noreferrer');
+    window.open(resumeUrl, '_blank', 'noopener,noreferrer');
   };
 
   const handleContactClick = () => {

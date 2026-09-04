@@ -606,6 +606,34 @@ class ApiClient {
       });
     },
   };
+
+  // SETTINGS (Resume & General Portfolio Settings)
+  settings = {
+    getResume: async (): Promise<{ resumeUrl: string }> => {
+      try {
+        const res = await this.request<any>('/settings/resume');
+        const url = res?.resumeUrl || res?.data?.resumeUrl || res;
+        return { resumeUrl: typeof url === 'string' ? url : '' };
+      } catch {
+        return {
+          resumeUrl:
+            localStorage.getItem('mrityunjay_resume_url') ||
+            'https://res.cloudinary.com/dpd6q8ex4/image/upload/v1788340801/Mrityunjay_kumar_resume0._ydptl9.pdf',
+        };
+      }
+    },
+    updateResume: async (resumeUrl: string): Promise<{ resumeUrl: string }> => {
+      const res = await this.request<any>('/settings/resume', {
+        method: 'PUT',
+        body: JSON.stringify({ resumeUrl }),
+      });
+      const updatedUrl = res?.data?.resumeUrl || res?.resumeUrl || resumeUrl;
+      try {
+        localStorage.setItem('mrityunjay_resume_url', updatedUrl);
+      } catch {}
+      return { resumeUrl: updatedUrl };
+    },
+  };
 }
 
 export const api = new ApiClient();

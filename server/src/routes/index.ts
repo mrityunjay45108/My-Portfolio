@@ -10,6 +10,7 @@ import mediaRoutes from './mediaRoutes.js';
 import githubRoutes from './githubRoutes.js';
 import adminGithubRoutes from './adminGithubRoutes.js';
 import aiRoutes from './aiRoutes.js';
+import settingsRoutes from './settingsRoutes.js';
 
 const apiRouter = Router();
 
@@ -24,6 +25,7 @@ apiRouter.use('/media', mediaRoutes);
 apiRouter.use('/github', githubRoutes);
 apiRouter.use('/admin/github', adminGithubRoutes);
 apiRouter.use('/ai', aiRoutes);
+apiRouter.use('/settings', settingsRoutes);
 
 // Health check endpoint
 apiRouter.get('/health', (_req, res) => {

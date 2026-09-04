@@ -12,12 +12,16 @@ import {
   Clock,
   Sparkles,
   CheckCircle,
+  FileText,
+  ExternalLink,
 } from 'lucide-react';
 import { AdminLayout } from '../../components/layout/AdminLayout';
 import { api } from '../../services/api';
 import { Button } from '../../components/ui/Button';
+import { useResume } from '../../context/ResumeContext';
 
 export const AdminDashboardPage: React.FC = () => {
+  const { resumeUrl } = useResume();
   const [stats, setStats] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -108,6 +112,47 @@ export const AdminDashboardPage: React.FC = () => {
             </div>
             <div className="text-3xl font-bold text-white font-mono">{stats?.messages?.total || 0}</div>
             <p className="text-xs text-slate-500">{stats?.messages?.unread || 0} unread inquiries</p>
+          </div>
+        </div>
+
+        {/* Live Resume Quick Status Banner */}
+        <div className="bg-gradient-to-r from-dark-900 via-dark-900 to-brand-950/40 border border-slate-800 rounded-3xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-4 min-w-0">
+            <div className="w-12 h-12 rounded-2xl bg-brand-500/10 border border-brand-500/20 text-brand-400 flex items-center justify-center shrink-0 shadow-xs">
+              <FileText className="w-6 h-6" />
+            </div>
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 flex-wrap">
+                <h3 className="text-sm font-bold text-white">Live Portfolio Resume</h3>
+                <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
+                  <CheckCircle className="w-3 h-3" /> Live & Connected
+                </span>
+                {resumeUrl.includes('cloudinary.com') && (
+                  <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                    Cloudinary CDN
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-slate-400 font-mono mt-1 truncate max-w-xs sm:max-w-md md:max-w-xl">
+                {resumeUrl}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2.5 shrink-0 w-full sm:w-auto">
+            <a
+              href={resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2.5 text-slate-400 hover:text-white rounded-xl bg-dark-950 border border-slate-800 hover:border-slate-700 transition-colors"
+              title="Preview Live PDF"
+            >
+              <ExternalLink className="w-4 h-4" />
+            </a>
+            <Link to="/admin/resume" className="flex-1 sm:flex-initial">
+              <Button variant="primary" size="sm" leftIcon={<FileText className="w-3.5 h-3.5" />}>
+                Update Resume URL
+              </Button>
+            </Link>
           </div>
         </div>
 

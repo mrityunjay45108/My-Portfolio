@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, FileText, Lock } from 'lucide-react';
 import { personalInfo } from '../../data/personal';
 import { useAuth } from '../../context/AuthContext';
+import { useResume } from '../../context/ResumeContext';
 import { GithubIcon, LinkedinIcon } from '../ui/Icons';
 import { trackResumeDownload, trackSocialClick } from '../../services/analytics';
 
@@ -13,6 +14,7 @@ export const Navbar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
+  const { resumeUrl } = useResume();
 
   const isHomePage = location.pathname === '/';
 
@@ -155,7 +157,7 @@ export const Navbar: React.FC = () => {
             </a>
 
             <a
-              href={personalInfo.resumeUrl}
+              href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackResumeDownload('navbar_desktop')}
@@ -178,7 +180,7 @@ export const Navbar: React.FC = () => {
           {/* Mobile Hamburger Button */}
           <div className="flex lg:hidden items-center gap-2">
             <a
-              href={personalInfo.resumeUrl}
+              href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackResumeDownload('navbar_mobile')}
@@ -256,9 +258,10 @@ export const Navbar: React.FC = () => {
               </div>
 
               <a
-                href={personalInfo.resumeUrl}
+                href={resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackResumeDownload('navbar_mobile_drawer')}
                 className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-white bg-brand-600 rounded-xl shadow-lg shadow-brand-500/20"
               >
                 <FileText className="w-4 h-4" />

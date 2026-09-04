@@ -1,11 +1,13 @@
 import React from 'react';
 import { ArrowDown, FileText, Send, Mail, Terminal } from 'lucide-react';
 import { personalInfo } from '../../data/personal';
+import { useResume } from '../../context/ResumeContext';
 import { Button } from '../ui/Button';
 import { GithubIcon, LinkedinIcon } from '../ui/Icons';
 import { trackResumeDownload, trackSocialClick } from '../../services/analytics';
 
 export const HeroSection: React.FC = () => {
+  const { resumeUrl } = useResume();
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -62,7 +64,7 @@ export const HeroSection: React.FC = () => {
               </Button>
 
               <a
-                href={personalInfo.resumeUrl}
+                href={resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackResumeDownload('hero_cta')}

@@ -376,3 +376,11 @@ model AiSetting {
 
   @@map("ai_settings")
 }
+
+model PortfolioSetting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("portfolio_settings")
+}
